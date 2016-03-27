@@ -1,0 +1,60 @@
+.row-header {
+    margin: 0px auto;
+    padding: 0px 0px;
+}
+.row-content {
+    margin: 50px 120px;
+    padding: 50px 0px;
+    min-height: 100px;
+    border-bottom: 1px ridge;
+    background-color: #EEEEEE;
+}
+.row-footer {
+    background-color: #AfAfAf;
+    margin: 0px auto;
+    padding: 20px 0px;
+}
+.navbar-inverse {
+    background: #303f9f;
+}
+.navbar-inverse .navbar-nav .active a,
+.navbar-inverse .navbar-nav .active a:hover,
+.navbar-inverse .navbar-nav .active a:focus {
+    color: #ffffff;
+    background: #1a237e;
+}
+.navbar-inverse .navbar-nav .open a {
+    background: #1a237e;
+    color: #ffffff;
+    /*伪类的标注方法*/
+}
+.navbar-inverse .navbar-nav .open a:hover {
+    background: #1a237e;
+    color: #ffffff;
+}
+.navbar-inverse .navbar-nav .open a:focus {
+    background: #1a237e;
+    color: #ffffff;
+}
+.navbar-inverse .navbar-nav .open .dropdown-menu {
+    background: #303f9f;
+    color: #eeeeee;
+}
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+    background: #303f9f;
+    color: #eeeeee;
+}
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover {
+    color: #000000;
+}
+body {
+    align: center;
+    padding: 50px 0px 0px 0px;
+    z-index: 0;
+}
+.jumbotron {
+    margin: 0px auto;
+    padding: 70px 30px;
+    background: #7986CB;
+    color: floralwhite;
+}
