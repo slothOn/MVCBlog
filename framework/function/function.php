@@ -14,6 +14,7 @@ function C($name,$method){
     $classname=$name."Controller";
     $obj=new $classname();
     $obj->$method();
+
 }
 
 //view

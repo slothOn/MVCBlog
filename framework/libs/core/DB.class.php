@@ -46,4 +46,7 @@ class DB
         return self::$db->del($table,$where);
     }
 
+    public static function findLimited($sql,$skip,$limit){
+        return self::$db->findLimited($sql,$skip,$limit);
+    }
 }

@@ -44,4 +44,14 @@ class newsModel
         }
         return $rows;
     }
+
+    function findLimitedNews($page_num,$limit_num){
+        $sql="select * from $this->table order by dateline desc";
+        $skip_num=($page_num-1)*$limit_num;
+        $rows=DB::findLimited($sql,$skip_num,$limit_num);
+        foreach($rows as $row){
+            $row['content']=substr($row['content'],0,200);
+        }
+        return $rows;
+    }
 }

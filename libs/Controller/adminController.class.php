@@ -15,7 +15,7 @@ class adminController
         ChromePhp::log('init');
         session_start();
         if(!isset($_SESSION['auth']) && PC::$method!='login'){
-            $this->showMessage('请先登录','admin.php?controller=admin&method=login');
+            $this->showMessage('请先登录','index.php?controller=admin&method=login');
         }else{
             $this->auth=($_SESSION['auth'])?$_SESSION['auth']:array();
         }
@@ -28,7 +28,7 @@ class adminController
     function login(){
         //已经登录
         ChromePhp::log('auth:'.$_SESSION['auth']);
-        if(!empty($this->auth)){header('location:admin.php?controller=admin&method=index'); return;}
+        if(!empty($this->auth)){header('location:index.php?controller=admin&method=index'); return;}
 
         if(!$_POST['submit'])
             VIEW::display('login.html');
@@ -40,20 +40,20 @@ class adminController
         $_SESSION=array();
         setcookie(session_name(),'',time()-1);
         session_destroy();
-        $this->showMessage('退出成功','admin.php?controller=admin&method=login');
+        $this->showMessage('退出成功','index.php?controller=admin&method=login');
     }
 
     function index(){
         $newsobj=M('news');
         $newsnum=$newsobj->count();
         VIEW::assign(array('newsnum' => $newsnum));
-        VIEW::display('index.html');
+        VIEW::display('adminindex.html');
     }
 
     function checkLogin(){
 
         if(empty($_POST['username'])||empty($_POST['password'])){
-            $this->showmessage('登录失败！', 'admin.php?controller=admin&method=login');
+            $this->showmessage('登录失败！', 'index.php?controller=admin&method=login');
         }
         $username=daddslashes($_POST['username']);
         $passwd=MD5(daddslashes($_POST['password']));
@@ -61,9 +61,9 @@ class adminController
         $auth=$authobj->checkAuth($username,$passwd);
         if($auth){
             $_SESSION['auth']=$auth;
-            $this->showMessage('登录成功','admin.php?controller=admin&method=index');
+            $this->showMessage('登录成功','index.php?controller=admin&method=index');
         }else{
-            $this->showMessage('用户名密码错误','admin.php?controller=admin&method=login');
+            $this->showMessage('用户名密码错误','index.php?controller=admin&method=login');
         }
     }
 
@@ -80,7 +80,7 @@ class adminController
     private function newssubmit(){
         extract($_POST);
         if(!isset($title)||!isset($content)){
-            $this->showMessage('请输入标题和内容','admin.php?controller=admin&method=newsadd');
+            $this->showMessage('请输入标题和内容','index.php?controller=admin&method=newsadd');
         }
         $title = daddslashes($title);
         $content = daddslashes($content);
@@ -95,10 +95,10 @@ class adminController
         //判断是插入还是修改
         if($_POST['id'] != ''){
             $newsobj->updateById($data,intval($_POST['id']));
-            $this->showMessage('修改成功','admin.php?controller=admin&method=newslist');
+            $this->showMessage('修改成功','index.php?controller=admin&method=newslist');
         }else{
             $newsobj->insert($data);
-            $this->showMessage('插入成功','admin.php?controller=admin&method=newslist');
+            $this->showMessage('插入成功','index.php?controller=admin&method=newslist');
         }
     }
 
@@ -124,9 +124,9 @@ class adminController
         $newsobj=M('news');
         $id=$_GET['id'];
         if($newsobj->deleteById($id)){
-            $this->showMessage('删除成功','admin.php?controller=admin&method=newslist');
+            $this->showMessage('删除成功','index.php?controller=admin&method=newslist');
         }else{
-            $this->showMessage('删除失败','admin.php?controller=admin&method=newslist');
+            $this->showMessage('删除失败','index.php?controller=admin&method=newslist');
         }
     }
 

@@ -31,10 +31,13 @@ class PC{
     }
     public static function run($configs){
         self::$configs=$configs;
+        ChromePhp::log('initialize');
         self::initDB();
+
         self::initView();
         self::initControllers();
         self::initMethods();
+
         C(self::$controller,self::$method);
     }
 }

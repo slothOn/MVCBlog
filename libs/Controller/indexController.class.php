@@ -9,10 +9,17 @@
 class indexController
 {
     public function index(){
-        $newsobj=M('news');
-        $data=$newsobj->findProcessedAll();
-        VIEW::assign(array('data'=>$data));
-        VIEW::display('frontendindex.html');
+        $pagenum=$_GET['page']?$_GET['page']:1;
+        //ChromePhp::log($pagenum);
+        if($pagenum<=1){
+            $newsobj=M('news');
+            //$data=$newsobj->findProcessedAll();
+            $data=$newsobj->findLimitedNews($pagenum,3);
+            VIEW::assign(array('data'=>$data));
+            VIEW::display('frontendindex.html');
+        }else{
+            $this->moreNews($pagenum);
+        }
     }
 
     public function detail(){
@@ -25,8 +32,23 @@ class indexController
         VIEW::display('frontenddetail.html');
     }
 
-    function testM(){
+    protected function testM(){
         M('auth');
+    }
+
+    public function moreNews($pagenum){
+        ChromePhp::log($pagenum);
+        $newsobj=M('news');
+        $data=$newsobj->findLimitedNews($pagenum,3);
+        /*
+        if(!empty($data)){
+            echo json_encode($data);
+        }else{
+            ChromePhp::log('数组为空');
+            echo '0';
+        }*/
+        $arr=array("num"=>count($data),"list"=>$data);
+        echo json_encode($arr);
     }
 }
 

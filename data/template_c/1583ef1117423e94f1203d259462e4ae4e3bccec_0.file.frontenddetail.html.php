@@ -1,3 +1,26 @@
+<?php
+/* Smarty version 3.1.29, created on 2016-03-29 10:39:32
+  from "/var/www/html/MVCLearn/frontenddetail.html" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_56f9eae4c26325_57607800',
+  'file_dependency' => 
+  array (
+    '1583ef1117423e94f1203d259462e4ae4e3bccec' => 
+    array (
+      0 => '/var/www/html/MVCLearn/frontenddetail.html',
+      1 => 1459155495,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_56f9eae4c26325_57607800 ($_smarty_tpl) {
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,13 +110,17 @@
     </div>
     <div class="row row-content">
         <div class="col-xs-12 col-sm-9">
-            <h2 class="media-heading">{$data['title']}&nbsp;&nbsp;<span class="label label-danger">NEW</span></h2>
-            <br><span class="label label-success">{$data['author']}</span>
-            <p>{$data['content']} </p>
+            <h2 class="media-heading"><?php echo $_smarty_tpl->tpl_vars['data']->value['title'];?>
+&nbsp;&nbsp;<span class="label label-danger">NEW</span></h2>
+            <br><span class="label label-success"><?php echo $_smarty_tpl->tpl_vars['data']->value['author'];?>
+</span>
+            <p><?php echo $_smarty_tpl->tpl_vars['data']->value['content'];?>
+ </p>
         </div>
         <div class="col-xs-12 col-sm-3">
             <h2 class="media-heading">介绍</h2>
-            <p>{$info}</p>
+            <p><?php echo $_smarty_tpl->tpl_vars['info']->value;?>
+</p>
         </div>
     </div>
 
@@ -137,7 +164,12 @@
             </div>
         </div>
     </footer>
-    <script src="img/js/jquery.min.js"></script>
-    <script src="img/js/bootstrap.min.js"></script>
+    <?php echo '<script'; ?>
+ src="img/js/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="img/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 </body>
-</html>
+</html><?php }
+}

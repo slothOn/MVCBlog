@@ -58,7 +58,6 @@ class mysql
      *@return array   返回列表数组
      **/
     function findAll($query){
-        ChromePhp::log($query);
         $list=array();
         $result=mysql_query($query);
         while($rs=mysql_fetch_array($result, MYSQL_ASSOC)){//mysql_fetch_array函数把资源转换为数组，一次转换出一行出来
@@ -143,4 +142,13 @@ class mysql
         return mysql_affected_rows();
     }
 
+    function findLimited($sql,$skip,$limit){
+        $list=array();
+        $query=$sql.' '."limit $skip,$limit";
+        $result=mysql_query($query);
+        while($rs=mysql_fetch_array($result, MYSQL_ASSOC)){//mysql_fetch_array函数把资源转换为数组，一次转换出一行出来
+            $list[]=$rs;
+        }
+        return $list;
+    }
 }

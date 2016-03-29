@@ -1,3 +1,26 @@
+<?php
+/* Smarty version 3.1.29, created on 2016-03-29 14:06:19
+  from "/var/www/html/MVCLearn/frontendindex.html" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_56fa1b5bdc66b2_49662263',
+  'file_dependency' => 
+  array (
+    'eff4666fb5adcf8e51aead21782ffd2dac5f58a6' => 
+    array (
+      0 => '/var/www/html/MVCLearn/frontendindex.html',
+      1 => 1459231574,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_56fa1b5bdc66b2_49662263 ($_smarty_tpl) {
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,22 +104,46 @@
             </div>
         </div>
     </div>
-    {foreach $data as $val}
+    <?php
+$_from = $_smarty_tpl->tpl_vars['data']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_val_0_saved_item = isset($_smarty_tpl->tpl_vars['val']) ? $_smarty_tpl->tpl_vars['val'] : false;
+$_smarty_tpl->tpl_vars['val'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['val']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['val']->value) {
+$_smarty_tpl->tpl_vars['val']->_loop = true;
+$__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
+?>
     <div class="news row row-content">
         <div class="col-xs-12">
-            <h2 class="media-heading">{$val['title']}&nbsp;&nbsp;<span class="label label-danger">NEW</span></h2>
-            <br><span class="label label-success">{$val['author']}</span>
-            <p>{$val['content']} </p>
-            <p><a href="index.php?controller=index&method=detail&id={$val['id']}" class="btn btn-primary btn-xs">More &#187;</a></p>
+            <h2 class="media-heading"><?php echo $_smarty_tpl->tpl_vars['val']->value['title'];?>
+&nbsp;&nbsp;<span class="label label-danger">NEW</span></h2>
+            <br><span class="label label-success"><?php echo $_smarty_tpl->tpl_vars['val']->value['author'];?>
+</span>
+            <p><?php echo $_smarty_tpl->tpl_vars['val']->value['content'];?>
+ </p>
+            <p><a href="index.php?controller=index&method=detail&id=<?php echo $_smarty_tpl->tpl_vars['val']->value['id'];?>
+" class="btn btn-primary btn-xs">More &#187;</a></p>
         </div>
     </div>
-    {foreachelse}
+    <?php
+$_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_local_item;
+}
+if (!$_smarty_tpl->tpl_vars['val']->_loop) {
+?>
     <div class="row row-content">
         <div class="col-xs-12">
             <p>暂时没有内容发布</p>
         </div>
     </div>
-    {/foreach}
+    <?php
+}
+if ($__foreach_val_0_saved_item) {
+$_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
+}
+?>
     <div id="no_more_data" class="row" style="display: none;">
         <div style="width:1000px;margin: 10px auto;" class="alert alert-warning alert-dismissable">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -145,11 +192,18 @@
             </div>
         </div>
     </footer>
-    <script src="img/js/jquery.min.js"></script>
-    <script src="img/js/bootstrap.min.js"></script>
+    <?php echo '<script'; ?>
+ src="img/js/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="img/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
     <!--避免smarty定界符与jquery冲突-->
-    {literal}
-    <script src="img/js/myajax.js"></script>
-    {/literal}
+    
+    <?php echo '<script'; ?>
+ src="img/js/myajax.js"><?php echo '</script'; ?>
+>
+    
 </body>
-</html>
+</html><?php }
+}

@@ -55,6 +55,23 @@ body {
 .jumbotron {
     margin: 0px auto;
     padding: 70px 30px;
-    background: #7986CB;
+    /*background: #7986CB;*/
+    background-image: url("../images/home-hero.jpg");
+    background-position: bottom left;
+    background-repeat: no-repeat;
     color: floralwhite;
+}
+address {
+    color: #0f0f0f;
+    font-size: 80%;
+    margin: 0px;
+}
+.row-content-about {
+    margin: 0px auto;
+    padding: 50px 0px;
+    min-height: 400px;
+    border-bottom: 1px ridge;
+}
+.affix {
+    top: 100px;
 }

@@ -62,7 +62,7 @@
 			<!-- <a class="logout_user" href="#" title="Logout">Logout</a> -->
 		</div>
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="admin.php?controller=admin">后台管理中心</a> <div class="breadcrumb_divider"></div> <a class="current">新闻管理列表</a></article>
+			<article class="breadcrumbs"><a href="index.php?controller=admin">后台管理中心</a> <div class="breadcrumb_divider"></div> <a class="current">新闻管理列表</a></article>
 		</div>
 	</section><!-- end of secondary bar -->
 
@@ -91,8 +91,8 @@
 						<td>{$value.id}</td>
 						<td>{$value.title}</td>
 						<td>{$value.author}</td>
-						<td><input type="image" src="img/images/icn_edit.png" title="Edit" onclick="window.location.href='admin.php?controller=admin&method=newsadd&id={$value.id}'">
-							<input type="image" src="img/images/icn_trash.png" title="Trash" onclick="window.location.href='admin.php?controller=admin&method=newsdel&id={$value.id}'"></td>
+						<td><input type="image" src="img/images/icn_edit.png" title="Edit" onclick="window.location.href='index.php?controller=admin&method=newsadd&id={$value.id}'">
+							<input type="image" src="img/images/icn_trash.png" title="Trash" onclick="window.location.href='index.php?controller=admin&method=newsdel&id={$value.id}'"></td>
 					</tr>
 					{foreachelse}
 					<tr>
