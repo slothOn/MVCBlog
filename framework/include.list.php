@@ -11,5 +11,6 @@ $paths=array(
     'libs/view/Smarty/Smarty.class.php',
     'libs/db/mysql.class.php',
     'libs/core/DB.class.php',
-    'libs/core/VIEW.class.php'
+    'libs/core/VIEW.class.php',
+    'libs/db/my_mysqli.class.php'
 );

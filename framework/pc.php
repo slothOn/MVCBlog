@@ -21,7 +21,7 @@ class PC{
         VIEW::init('Smarty',self::$configs['view_config']);
     }
     public static function initDB(){
-        DB::init('mysql',self::$configs['db_config']);
+        DB::init('My_mysqli',self::$configs['db_config']);
     }
     public static function initControllers(){
         self::$controller=isset($_GET['controller'])?$_GET['controller']:'index';

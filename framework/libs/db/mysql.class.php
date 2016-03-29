@@ -6,7 +6,7 @@
  * Date: 16-3-14
  * Time: 上午7:14
  */
-class mysql
+class Mysql
 {
     /**
      * 报错函数

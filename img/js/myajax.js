@@ -9,9 +9,9 @@ $(function(){
         var scrollT=$(window).scrollTop();//滚动条top
         var aa=(pageH-winH-scrollT)/winH;
         if(aa<0.02){
-            $.ajaxStart(function(){
-                
-            });
+            //$.ajaxStart(function(){
+            //
+            //});
             //ajax加载新的内容 jquery.getJSON相当于GET方法,参数追加到URL后,并且data是已经解析完成的json字符串
             $.getJSON('index.php',{"page":i},function(data){
                 i++;

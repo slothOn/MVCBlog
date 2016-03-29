@@ -12,8 +12,9 @@ class DB
     public static $db;
 
     public static function init($dbname,$config){
-        self::$db=new $dbname;
+        self::$db=new $dbname();
         self::$db->connect($config);
+        ChromePhp::log(self::$db->dbc);
     }
 
     public static function query($sql){
