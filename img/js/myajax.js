@@ -4,34 +4,31 @@
 $(function(){
     var winH=$(window).height();//页面可视区域
     var i=2;
-    $("#news_loading").ajaxStart(function(){
-        $(this).css("display","block");
-    }).ajaxStop(function(){
-        $(this).css("display","none");
-    });
     $(window).scroll(function () {
         var pageH=$(document.body).height();//page height,随着加载动态变化
         var scrollT=$(window).scrollTop();//滚动条top
         var aa=(pageH-winH-scrollT)/winH;
         if(aa<0.02){
-            //$.ajaxStart(function(){
-            //
-            //});
-            //ajax加载新的内容 jquery.getJSON相当于GET方法,参数追加到URL后,并且data是已经解析完成的json字符串
-            $.getJSON('index.php',{"page":i},function(data){
-                i++;
-                if(data){
-                    if(data.num != 0){
-                        for(var j=0;j<data.list.length;j++){
-                            var objj=data.list[j];
-                            assembleNews(objj.id,objj.title,objj.author,objj.content);
+            $("#no_more_data").css("display","none");
+            $("#news_loading").css("display","block");
+            setTimeout(function(){
+                //ajax加载新的内容 jquery.getJSON相当于GET方法,参数追加到URL后,并且data是已经解析完成的json字符串
+                $.getJSON('index.php',{"page":i},function(data){
+                    $("#news_loading").css("display","none");
+                    i++;
+                    if(data){
+                        if(data.num != 0){
+                            for(var j=0;j<data.list.length;j++){
+                                var objj=data.list[j];
+                                assembleNews(objj.id,objj.title,objj.author,objj.content);
+                            }
+                        }else{
+                            //已经加载至底部
+                            $("#no_more_data").css('display','block');
                         }
-                    }else{
-                        //已经加载至底部
-                        $("#no_more_data").css('display','block');
                     }
-                }
-            });
+                });
+            },2000);
         }
     });
 });
@@ -39,7 +36,7 @@ $(function(){
 function assembleNews(id,title,author,content){
     //markdown支持
     var converter=new showdown.Converter();
-    content=converter.makeHtml(content);
+    content=converter.makeHtml(content.substr(0,250));
 
     var newarticle=$(".news").clone().first();
     newarticle.find("media-heading").html(title+"&nbsp;&nbsp;");

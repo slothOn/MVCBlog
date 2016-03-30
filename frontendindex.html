@@ -86,7 +86,7 @@
         <div class="col-xs-12">
             <h2 class="media-heading">{$val['title']}&nbsp;&nbsp;<span class="label label-danger">NEW</span></h2>
             <br><span class="label label-success">{$val['author']}</span>
-            <p>{$val['content']} </p>
+            <p>{$val['content']|substr:0:250} </p>
             <p><a href="index.php?controller=index&method=detail&id={$val['id']}" class="btn btn-primary btn-xs">More &#187;</a></p>
         </div>
     </div>
@@ -97,14 +97,14 @@
         </div>
     </div>
     {/foreach}
-    <div id="no_more_data" class="row" style="display: none;">
-        <div style="width:1000px;margin: 10px auto;" class="alert alert-warning alert-dismissable">
+    <div id="no_more_data" class="row" style="display: none;font-size: large">
+        <div style="width:1000px;height:60px;margin: 20px auto;" class="alert alert-warning alert-dismissable">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <strong>Warning:</strong>:
             已经是最后一篇，没有更多的文章了
         </div>
     </div>
-    <p id="news_loading" style="text-align: center;display: none"><img width="250px" src="img/images/news_loading.gif"></p>
+    <div id="news_loading" style="text-align: center;display: none"><img height="100px" src="img/images/news_loading.gif"></div>
     <footer class="row-footer">
         <div class="container">
             <div class="row">
@@ -152,8 +152,5 @@
     <!--markdown js插件-->
     <script src="img/js/showdown.min.js"></script>
     <script src="img/js/showdown-twitter.min.js"></script>
-    <!--避免smarty定界符与jquery冲突-->
-    {literal}
-    {/literal}
 </body>
 </html>

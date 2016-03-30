@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-30 16:55:59
+/* Smarty version 3.1.29, created on 2016-03-30 22:56:24
   from "/var/www/html/MVCLearn/frontendindex.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56fb949f4c67d5_14531942',
+  'unifunc' => 'content_56fbe918d442d5_03874269',
   'file_dependency' => 
   array (
     'eff4666fb5adcf8e51aead21782ffd2dac5f58a6' => 
     array (
       0 => '/var/www/html/MVCLearn/frontendindex.html',
-      1 => 1459328114,
+      1 => 1459349783,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56fb949f4c67d5_14531942 ($_smarty_tpl) {
+function content_56fbe918d442d5_03874269 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -122,7 +122,7 @@ $__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
 &nbsp;&nbsp;<span class="label label-danger">NEW</span></h2>
             <br><span class="label label-success"><?php echo $_smarty_tpl->tpl_vars['val']->value['author'];?>
 </span>
-            <p><?php echo $_smarty_tpl->tpl_vars['val']->value['content'];?>
+            <p><?php echo substr($_smarty_tpl->tpl_vars['val']->value['content'],0,250);?>
  </p>
             <p><a href="index.php?controller=index&method=detail&id=<?php echo $_smarty_tpl->tpl_vars['val']->value['id'];?>
 " class="btn btn-primary btn-xs">More &#187;</a></p>
@@ -144,14 +144,14 @@ if ($__foreach_val_0_saved_item) {
 $_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
 }
 ?>
-    <div id="no_more_data" class="row" style="display: none;">
-        <div style="width:1000px;margin: 10px auto;" class="alert alert-warning alert-dismissable">
+    <div id="no_more_data" class="row" style="display: none;font-size: large">
+        <div style="width:1000px;height:60px;margin: 20px auto;" class="alert alert-warning alert-dismissable">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <strong>Warning:</strong>:
             已经是最后一篇，没有更多的文章了
         </div>
     </div>
-    <p id="news_loading" style="text-align: center;display: none"><img width="250px" src="img/images/news_loading.gif"></p>
+    <div id="news_loading" style="text-align: center;display: none"><img height="100px" src="img/images/news_loading.gif"></div>
     <footer class="row-footer">
         <div class="container">
             <div class="row">
@@ -211,9 +211,6 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
     <?php echo '<script'; ?>
  src="img/js/showdown-twitter.min.js"><?php echo '</script'; ?>
 >
-    <!--避免smarty定界符与jquery冲突-->
-    
-    
 </body>
 </html><?php }
 }

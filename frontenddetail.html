@@ -85,7 +85,7 @@
             </div>
         </div>
     </div>
-    <div class="row row-content">
+    <div class="news row row-content">
         <div class="col-xs-12 col-sm-9">
             <h2 class="media-heading">{$data['title']}&nbsp;&nbsp;<span class="label label-danger">NEW</span></h2>
             <br><span class="label label-success">{$data['author']}</span>
@@ -139,5 +139,16 @@
     </footer>
     <script src="img/js/jquery.min.js"></script>
     <script src="img/js/bootstrap.min.js"></script>
+    <script src="img/js/showdown.min.js"></script>
+    <!--避免smarty定界符与jquery冲突-->
+    {literal}
+    <script>
+        var converter=new showdown.Converter();
+        var newsnode=document.getElementsByClassName("news")[0].getElementsByTagName("p")[0];
+        var rawcontent=newsnode.innerHTML;
+        var content=converter.makeHtml(rawcontent);
+        newsnode.innerHTML=content;
+    </script>
+    {/literal}
 </body>
 </html>
