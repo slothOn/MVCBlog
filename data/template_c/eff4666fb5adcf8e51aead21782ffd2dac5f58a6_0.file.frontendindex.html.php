@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-29 22:46:53
+/* Smarty version 3.1.29, created on 2016-03-30 16:55:59
   from "/var/www/html/MVCLearn/frontendindex.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56fa955d8c9677_60428396',
+  'unifunc' => 'content_56fb949f4c67d5_14531942',
   'file_dependency' => 
   array (
     'eff4666fb5adcf8e51aead21782ffd2dac5f58a6' => 
     array (
       0 => '/var/www/html/MVCLearn/frontendindex.html',
-      1 => 1459262808,
+      1 => 1459328114,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56fa955d8c9677_60428396 ($_smarty_tpl) {
+function content_56fb949f4c67d5_14531942 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -198,11 +198,21 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
     <?php echo '<script'; ?>
  src="img/js/bootstrap.min.js"><?php echo '</script'; ?>
 >
-    <!--避免smarty定界符与jquery冲突-->
-    
+    <?php echo '<script'; ?>
+ src="img/js/myhelper.js"><?php echo '</script'; ?>
+>
     <?php echo '<script'; ?>
  src="img/js/myajax.js"><?php echo '</script'; ?>
 >
+    <!--markdown js插件-->
+    <?php echo '<script'; ?>
+ src="img/js/showdown.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="img/js/showdown-twitter.min.js"><?php echo '</script'; ?>
+>
+    <!--避免smarty定界符与jquery冲突-->
+    
     
 </body>
 </html><?php }

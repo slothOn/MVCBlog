@@ -37,12 +37,14 @@ $(function(){
 });
 
 function assembleNews(id,title,author,content){
-    //console.log(id+','+title+','+author+','+content);
+    //markdown支持
+    var converter=new showdown.Converter();
+    content=converter.makeHtml(content);
+
     var newarticle=$(".news").clone().first();
     newarticle.find("media-heading").html(title+"&nbsp;&nbsp;");
     newarticle.find(".label").html(author);
     newarticle.find("p").first().html(content);
     newarticle.find("a").attr('href','index.php?controller=index&method=detail&id='+id);
     $(".news").last().after(newarticle);
-    //console.log(newarticle.text());
 }
