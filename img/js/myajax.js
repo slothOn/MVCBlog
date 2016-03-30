@@ -4,6 +4,11 @@
 $(function(){
     var winH=$(window).height();//页面可视区域
     var i=2;
+    $("#news_loading").ajaxStart(function(){
+        $(this).css("display","block");
+    }).ajaxStop(function(){
+        $(this).css("display","none");
+    });
     $(window).scroll(function () {
         var pageH=$(document.body).height();//page height,随着加载动态变化
         var scrollT=$(window).scrollTop();//滚动条top
@@ -16,15 +21,14 @@ $(function(){
             $.getJSON('index.php',{"page":i},function(data){
                 i++;
                 if(data){
-                    console.log(data.num);
-                    if(data.num == 0){
-                        //已经加载至底部
-                        $("#no_more_data").css('display','block');
-                    }else{
+                    if(data.num != 0){
                         for(var j=0;j<data.list.length;j++){
                             var objj=data.list[j];
                             assembleNews(objj.id,objj.title,objj.author,objj.content);
                         }
+                    }else{
+                        //已经加载至底部
+                        $("#no_more_data").css('display','block');
                     }
                 }
             });

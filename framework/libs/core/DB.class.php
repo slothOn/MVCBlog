@@ -14,7 +14,7 @@ class DB
     public static function init($dbname,$config){
         self::$db=new $dbname();
         self::$db->connect($config);
-        ChromePhp::log(self::$db->dbc);
+        //ChromePhp::log(self::$db->dbc);
     }
 
     public static function query($sql){
@@ -31,8 +31,8 @@ class DB
     }
 
     public static function findResult($sql, $row = 0, $filed = 0){
-        $query = self::$db->query($sql);
-        return self::$db->findResult($query, $row, $filed);
+//        $query = self::$db->query($sql);
+        return self::$db->findResult($sql, $row, $filed);
     }
 
     public static function insert($table,$arr){

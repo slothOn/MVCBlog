@@ -8,7 +8,7 @@
 //引擎程序
 $currentdir=dirname(__FILE__);
 require_once($currentdir.'/include.list.php');
-//require_once('include.list.php');
+
 foreach($paths as $path){
     include_once($currentdir.'/'.$path);
 }

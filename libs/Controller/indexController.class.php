@@ -10,7 +10,6 @@ class indexController
 {
     public function index(){
         $pagenum=$_GET['page']?$_GET['page']:1;
-        //ChromePhp::log($pagenum);
         if($pagenum<=1){
             $newsobj=M('news');
             //$data=$newsobj->findProcessedAll();
@@ -40,13 +39,6 @@ class indexController
         ChromePhp::log($pagenum);
         $newsobj=M('news');
         $data=$newsobj->findLimitedNews($pagenum,3);
-        /*
-        if(!empty($data)){
-            echo json_encode($data);
-        }else{
-            ChromePhp::log('数组为空');
-            echo '0';
-        }*/
         $arr=array("num"=>count($data),"list"=>$data);
         echo json_encode($arr);
     }

@@ -29,7 +29,6 @@ class My_mysqli
      * @return bool  连接成功或不成功
      **/
     function connect($config){
-        ChromePhp::log('mysqli connected');
         extract($config);
         $this->dbc=mysqli_connect($dbhost,$dbuser,$dbpsw,$dbname) or die(mysqli_error($dbc));
         //mysqli_query($dbc,"set names ".$dbcharset);
@@ -71,6 +70,7 @@ class My_mysqli
         $query=$query.' limit '.$row.',1';
         $result=mysqli_query($this->dbc,$query);
         $rs=mysqli_fetch_row($result);
+        ChromePhp::log('findResult:'.$rs[$filed]);
         return $rs[$filed];
     }
 

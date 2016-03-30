@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-29 14:06:19
+/* Smarty version 3.1.29, created on 2016-03-29 22:46:53
   from "/var/www/html/MVCLearn/frontendindex.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56fa1b5bdc66b2_49662263',
+  'unifunc' => 'content_56fa955d8c9677_60428396',
   'file_dependency' => 
   array (
     'eff4666fb5adcf8e51aead21782ffd2dac5f58a6' => 
     array (
       0 => '/var/www/html/MVCLearn/frontendindex.html',
-      1 => 1459231574,
+      1 => 1459262808,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56fa1b5bdc66b2_49662263 ($_smarty_tpl) {
+function content_56fa955d8c9677_60428396 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -151,7 +151,7 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
             已经是最后一篇，没有更多的文章了
         </div>
     </div>
-
+    <p id="news_loading" style="text-align: center;display: none"><img width="250px" src="img/images/news_loading.gif"></p>
     <footer class="row-footer">
         <div class="container">
             <div class="row">
