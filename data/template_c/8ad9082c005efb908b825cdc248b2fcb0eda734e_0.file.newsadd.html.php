@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-30 14:33:28
+/* Smarty version 3.1.29, created on 2016-04-01 01:46:21
   from "/var/www/html/MVCLearn/newsadd.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56fb7338a3e095_59917735',
+  'unifunc' => 'content_56fd626dc95bd0_31248999',
   'file_dependency' => 
   array (
     '8ad9082c005efb908b825cdc248b2fcb0eda734e' => 
     array (
       0 => '/var/www/html/MVCLearn/newsadd.html',
-      1 => 1459147883,
+      1 => 1459446381,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:leftmenu.html' => 1,
   ),
 ),false)) {
-function content_56fb7338a3e095_59917735 ($_smarty_tpl) {
+function content_56fd626dc95bd0_31248999 ($_smarty_tpl) {
 ?>
 <!doctype html>
 <html>
@@ -126,7 +126,7 @@ function content_56fb7338a3e095_59917735 ($_smarty_tpl) {
 </textarea>
 							</fieldset>
 							<fieldset style="width:48%; float:left; margin-right: 3%;">
-								<label>作者</label>
+								<label>关键字(英文逗号分隔)</label>
 								<input type="text" name="author" style="width:92%;" value="<?php echo (($tmp = @$_smarty_tpl->tpl_vars['data']->value['author'])===null||$tmp==='' ? '' : $tmp);?>
 ">
 							</fieldset>

@@ -22,7 +22,7 @@ $(function(){
                         if(data.num != 0){
                             for(var j=0;j<data.list.length;j++){
                                 var objj=data.list[j];
-                                assembleNews(objj.id,objj.title,objj.author,objj.content);
+                                assembleNews(objj.id,objj.title,objj.author,objj.category,objj.subcategory,objj.content);
                             }
                         }else{
                             //已经加载至底部
@@ -35,14 +35,16 @@ $(function(){
     });
 });
 
-function assembleNews(id,title,author,content){
+function assembleNews(id,title,author,category,subcategory,content){
     //markdown支持
     var converter=new showdown.Converter();
     content=converter.makeHtml(content.substr(0,250));
     console.log(id+","+title+","+author);
     var newarticle=$(".news").clone().first();
     newarticle.find(".media-heading").html(title+"&nbsp;&nbsp;");
-    newarticle.find(".label").html(author);
+    newarticle.find(".keyword").html(author);
+    newarticle.find(".mycategory").html('<span class="glyphicon glyphicon-tag"></span>'+category);
+    newarticle.find(".mysubcategory").html('<span class="glyphicon glyphicon-tag"></span>'+subcategory);
     newarticle.find("p").first().html(content);
     newarticle.find("a").attr('href','index.php?controller=index&method=detail&id='+id);
     $(".news").last().after(newarticle);

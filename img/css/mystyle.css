@@ -75,3 +75,6 @@ address {
 .affix {
     top: 100px;
 }
+.mycategory,.mysubcategory{
+    padding: 5px 10px;
+}
