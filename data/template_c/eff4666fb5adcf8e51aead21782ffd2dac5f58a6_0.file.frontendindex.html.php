@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-30 22:56:24
+/* Smarty version 3.1.29, created on 2016-03-31 09:52:08
   from "/var/www/html/MVCLearn/frontendindex.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56fbe918d442d5_03874269',
+  'unifunc' => 'content_56fc82c891c585_79035210',
   'file_dependency' => 
   array (
     'eff4666fb5adcf8e51aead21782ffd2dac5f58a6' => 
     array (
       0 => '/var/www/html/MVCLearn/frontendindex.html',
-      1 => 1459349783,
+      1 => 1459389122,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56fbe918d442d5_03874269 ($_smarty_tpl) {
+function content_56fc82c891c585_79035210 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -73,6 +73,16 @@ function content_56fbe918d442d5_03874269 ($_smarty_tpl) {
                             </ul>
                         </li>
                         <li><a href="mailto:zxcheng95@gmail.com"><i class="fa fa-envelope"></i>Contact</a></li>
+                    </ul>
+                    <ul class="navbar-nav nav navbar-right">
+                        <li>
+                            <form class="form-inline" style="padding-top: 8px">
+                                <div class="input-group">
+                                    <input type="text" class="form-control">
+                                    <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+                                </div>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -145,7 +155,7 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
 }
 ?>
     <div id="no_more_data" class="row" style="display: none;font-size: large">
-        <div style="width:1000px;height:60px;margin: 20px auto;" class="alert alert-warning alert-dismissable">
+        <div style="width:1000px;height:60px;margin: 20px auto; vertical-align: middle" class="alert alert-warning alert-dismissable">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <strong>Warning:</strong>:
             已经是最后一篇，没有更多的文章了

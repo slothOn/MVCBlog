@@ -4,11 +4,13 @@
 $(function(){
     var winH=$(window).height();//页面可视区域
     var i=2;
+    var preaa=1;//辅助判断滚动条方向
     $(window).scroll(function () {
         var pageH=$(document.body).height();//page height,随着加载动态变化
         var scrollT=$(window).scrollTop();//滚动条top
         var aa=(pageH-winH-scrollT)/winH;
-        if(aa<0.02){
+        if(aa<0.02 && aa<=preaa){
+            preaa=aa;
             $("#no_more_data").css("display","none");
             $("#news_loading").css("display","block");
             setTimeout(function(){
@@ -37,9 +39,9 @@ function assembleNews(id,title,author,content){
     //markdown支持
     var converter=new showdown.Converter();
     content=converter.makeHtml(content.substr(0,250));
-
+    console.log(id+","+title+","+author);
     var newarticle=$(".news").clone().first();
-    newarticle.find("media-heading").html(title+"&nbsp;&nbsp;");
+    newarticle.find(".media-heading").html(title+"&nbsp;&nbsp;");
     newarticle.find(".label").html(author);
     newarticle.find("p").first().html(content);
     newarticle.find("a").attr('href','index.php?controller=index&method=detail&id='+id);

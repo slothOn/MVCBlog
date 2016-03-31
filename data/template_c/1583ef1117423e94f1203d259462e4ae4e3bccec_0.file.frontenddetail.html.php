@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-30 17:52:51
+/* Smarty version 3.1.29, created on 2016-03-31 14:42:07
   from "/var/www/html/MVCLearn/frontenddetail.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56fba1f32d44f0_93590014',
+  'unifunc' => 'content_56fcc6bf70d409_64714912',
   'file_dependency' => 
   array (
     '1583ef1117423e94f1203d259462e4ae4e3bccec' => 
     array (
       0 => '/var/www/html/MVCLearn/frontenddetail.html',
-      1 => 1459331565,
+      1 => 1459406524,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56fba1f32d44f0_93590014 ($_smarty_tpl) {
+function content_56fcc6bf70d409_64714912 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -74,6 +74,16 @@ function content_56fba1f32d44f0_93590014 ($_smarty_tpl) {
                     </li>
                     <li><a href="mailto:zxcheng95@gmail.com"><i class="fa fa-envelope"></i>Contact</a></li>
                 </ul>
+                <ul class="navbar-nav nav navbar-right">
+                    <li>
+                        <form class="form-inline" style="padding-top: 8px">
+                            <div class="input-group">
+                                <input type="text" class="form-control">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -108,21 +118,68 @@ function content_56fba1f32d44f0_93590014 ($_smarty_tpl) {
             </div>
         </div>
     </div>
-    <div class="news row row-content">
-        <div class="col-xs-12 col-sm-9">
-            <h2 class="media-heading"><?php echo $_smarty_tpl->tpl_vars['data']->value['title'];?>
+    <div class="container">
+        <div class="col-xs-12 col-sm-10">
+            <div class="news row row-content" style="margin-left: 0px;margin-right: 5px">
+                <div class="col-xs-12">
+                    <h2 class="media-heading"><?php echo $_smarty_tpl->tpl_vars['data']->value['title'];?>
 &nbsp;&nbsp;<span class="label label-danger">NEW</span></h2>
-            <br><span class="label label-success"><?php echo $_smarty_tpl->tpl_vars['data']->value['author'];?>
+                    <br><span class="label label-success"><?php echo $_smarty_tpl->tpl_vars['data']->value['author'];?>
 </span>
-            <p><?php echo $_smarty_tpl->tpl_vars['data']->value['content'];?>
+                    <p><?php echo $_smarty_tpl->tpl_vars['data']->value['content'];?>
  </p>
+                </div>
+            </div>
         </div>
-        <div class="col-xs-12 col-sm-3">
-            <h2 class="media-heading">介绍</h2>
-            <p><?php echo $_smarty_tpl->tpl_vars['info']->value;?>
-</p>
+        <div class="hidden-xs col-sm-2">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Categories</h3>
+                </div>
+                <div class="panel-group" id="accordion" style="margin: 3px">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="headingTech">
+                                <a class="btn-block" data-toggle="collapse" data-parent="#accordion" data-target="#tech">
+                                    <h3 class="panel-title">Tech</h3>
+                                </a>
+                            </div>
+                            <div class="panel-collapse collapse in" id="tech">
+                                <ul class="panel-body list-group">
+                                    <li class="list-group-item">Algorithm</li>
+                                    <li class="list-group-item">Web&Cloud</li>
+                                    <li class="list-group-item">Mobile</li>
+                                    <li class="list-group-item">CS Basics</li>
+                                    <li class="list-group-item">Advanced</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="headingLife">
+                                <a  class="btn-block" data-toggle="collapse" data-parent="#accordion" data-target="#life">
+                                    <h3 class="panel-title">Life</h3></a>
+                            </div>
+                            <div class="panel-collapse collapse" id="life">
+                                <ul class="panel-body list-group">
+                                    <li class="list-group-item">Travel</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="headingService">
+                                <a  class="btn-block" data-toggle="collapse" data-parent="#accordion" data-target="#service">
+                                    <h3 class="panel-title">Service</h3></a>
+                            </div>
+                            <div class="panel-collapse collapse" id="service">
+                                <ul class="panel-body list-group">
+                                    <li class="list-group-item">留学</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+            </div>
         </div>
     </div>
+
 
     <footer class="row-footer">
         <div class="container">

@@ -37,7 +37,7 @@
                     <li><a href="frontendabout.html"><span class="glyphicon glyphicon-info-sign"></span>关于</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <span class="glyphicon glyphicon-list-alt"></span>Service<span class="caret"></span></a>
+                            <span class="glyphicon glyphicon-list-alt"></span>Menu<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Appetizers</a></li>
                             <li><a href="#">Main Courses</a></li>
@@ -50,6 +50,16 @@
                         </ul>
                     </li>
                     <li><a href="mailto:zxcheng95@gmail.com"><i class="fa fa-envelope"></i>Contact</a></li>
+                </ul>
+                <ul class="navbar-nav nav navbar-right">
+                    <li>
+                        <form class="form-inline" style="padding-top: 8px">
+                            <div class="input-group">
+                                <input type="text" class="form-control">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+                            </div>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -85,17 +95,65 @@
             </div>
         </div>
     </div>
-    <div class="news row row-content">
-        <div class="col-xs-12 col-sm-9">
-            <h2 class="media-heading">{$data['title']}&nbsp;&nbsp;<span class="label label-danger">NEW</span></h2>
-            <br><span class="label label-success">{$data['author']}</span>
-            <p>{$data['content']} </p>
+    <div class="container">
+        <div class="col-xs-12 col-sm-10">
+            <div class="news row row-content" style="margin-left: 0px;margin-right: 5px">
+                <div class="col-xs-12">
+                    <h2 class="media-heading">{$data['title']}&nbsp;&nbsp;<span class="label label-danger">NEW</span></h2>
+                    <br><span class="label label-success">{$data['author']}</span>
+                    <p>{$data['content']} </p>
+                </div>
+            </div>
         </div>
-        <div class="col-xs-12 col-sm-3">
-            <h2 class="media-heading">介绍</h2>
-            <p>{$info}</p>
+        <div class="hidden-xs col-sm-2">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Categories</h3>
+                </div>
+                <div class="panel-group" id="accordion" style="margin: 3px">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="headingTech">
+                                <a class="btn-block" data-toggle="collapse" data-parent="#accordion" data-target="#tech">
+                                    <h3 class="panel-title">Tech</h3>
+                                </a>
+                            </div>
+                            <div class="panel-collapse collapse in" id="tech">
+                                <ul class="panel-body list-group">
+                                    <li class="list-group-item">Algorithm</li>
+                                    <li class="list-group-item">Web&Cloud</li>
+                                    <li class="list-group-item">Mobile</li>
+                                    <li class="list-group-item">CS Basics</li>
+                                    <li class="list-group-item">Advanced</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="headingLife">
+                                <a  class="btn-block" data-toggle="collapse" data-parent="#accordion" data-target="#life">
+                                    <h3 class="panel-title">Life</h3></a>
+                            </div>
+                            <div class="panel-collapse collapse" id="life">
+                                <ul class="panel-body list-group">
+                                    <li class="list-group-item">Travel</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="headingService">
+                                <a  class="btn-block" data-toggle="collapse" data-parent="#accordion" data-target="#service">
+                                    <h3 class="panel-title">Service</h3></a>
+                            </div>
+                            <div class="panel-collapse collapse" id="service">
+                                <ul class="panel-body list-group">
+                                    <li class="list-group-item">留学</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+            </div>
         </div>
     </div>
+
 
     <footer class="row-footer">
         <div class="container">

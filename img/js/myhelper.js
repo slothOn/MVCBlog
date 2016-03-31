@@ -29,8 +29,5 @@ function compile(){
         var htmlcontent = converter.makeHtml(raw_content);
         all_news[i].getElementsByTagName("p")[0].innerHTML = htmlcontent;
     }
-//            var converter = new showdown.Converter(),
-//            text      = '#hello, markdown!',
-//            html      = converter.makeHtml(text);
 }
 addLoadEvent(compile);
