@@ -84,13 +84,12 @@ class adminController
         }
         $title = daddslashes($title);
         $content = daddslashes($content);
-        $author = daddslashes($author);
-        $from = daddslashes($from);
+        $keywords = daddslashes($keywords);
         $newsobj=M('news');
         $data=array(
             'title'=>$title,
             'content'=>$content,
-            'author'=>$author
+            'keywords'=>$keywords
         );
         //判断是插入还是修改
         if($_POST['id'] != ''){

@@ -64,7 +64,7 @@ class indexController
     }
 
     public function processKeywords($data){
-        $keywords=$data['author'];
+
     }
 }
 

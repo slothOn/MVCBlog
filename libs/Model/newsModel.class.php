@@ -17,7 +17,7 @@ class newsModel
 
     function findOne_by_id($id){
 //        $sql="select * from $this->table WHERE id='$id'";
-        $sql="select id, title, author, content, dateline, news.scate_id AS scate_id,
+        $sql="select id, title, keywords, content, dateline, news.scate_id AS scate_id,
           scate_name AS subcategory, cate_name AS category from $this->table
           INNER JOIN subcate ON $this->table.scate_id=subcate.scate_id WHERE id='$id'";
         return DB::findOne($sql);
@@ -50,7 +50,7 @@ class newsModel
 
     function findLimitedNews($page_num,$limit_num){
         //$sql="select * from $this->table order by dateline desc";
-        $sql="select id, title, author, content, dateline, news.scate_id AS scate_id,
+        $sql="select id, title, keywords, content, dateline, news.scate_id AS scate_id,
           scate_name AS subcategory, cate_name AS category from $this->table
           INNER JOIN subcate ON $this->table.scate_id=subcate.scate_id
           order by dateline desc";

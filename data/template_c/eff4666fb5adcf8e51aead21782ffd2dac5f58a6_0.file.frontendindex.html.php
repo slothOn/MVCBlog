@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-04-01 01:25:50
+/* Smarty version 3.1.29, created on 2016-04-01 01:56:48
   from "/var/www/html/MVCLearn/frontendindex.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56fd5d9e9644b5_55886626',
+  'unifunc' => 'content_56fd64e100b870_36615711',
   'file_dependency' => 
   array (
     'eff4666fb5adcf8e51aead21782ffd2dac5f58a6' => 
     array (
       0 => '/var/www/html/MVCLearn/frontendindex.html',
-      1 => 1459415223,
+      1 => 1459447001,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:frontendfooter.html' => 1,
   ),
 ),false)) {
-function content_56fd5d9e9644b5_55886626 ($_smarty_tpl) {
+function content_56fd64e100b870_36615711 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -77,7 +77,7 @@ $__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
 </span>
             <span class="label label-primary mysubcategory"><span class="glyphicon glyphicon-tag"></span><?php echo $_smarty_tpl->tpl_vars['val']->value['subcategory'];?>
 </span>
-            <span class="label label-success keyword"><?php echo $_smarty_tpl->tpl_vars['val']->value['author'];?>
+            <span class="label label-success keyword"><?php echo $_smarty_tpl->tpl_vars['val']->value['keywords'];?>
 </span>
             <p><?php echo substr($_smarty_tpl->tpl_vars['val']->value['content'],0,250);?>
 </p>
