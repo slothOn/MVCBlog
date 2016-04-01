@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-31 15:11:46
+/* Smarty version 3.1.29, created on 2016-04-01 10:46:37
   from "/var/www/html/MVCLearn/frontendnav.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56fccdb2b16965_67120557',
+  'unifunc' => 'content_56fde10d13c556_06657186',
   'file_dependency' => 
   array (
     '2f72701d226a0810005fea25a66368499a3479db' => 
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56fccdb2b16965_67120557 ($_smarty_tpl) {
+function content_56fde10d13c556_06657186 ($_smarty_tpl) {
 ?>
 <nav class="nav navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">

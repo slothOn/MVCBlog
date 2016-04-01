@@ -41,7 +41,11 @@
                     <br>
                     <span class="label label-danger mycategory"><span class="glyphicon glyphicon-tag"></span>{$data['category']}</span>
                     <span class="label label-primary mysubcategory"><span class="glyphicon glyphicon-tag"></span>{$data['subcategory']}</span>
-                    <span class="label label-success keyword">{$data['keywords']}</span>
+                    <span class="keyword">
+                        {foreach $data['keywords'] as $keyword}
+                            <span class="label label-success">{$keyword}</span>
+                        {/foreach}
+                    </span>
                     <p>{$data['content']} </p>
                 </div>
             </div>

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-04-01 01:56:48
+/* Smarty version 3.1.29, created on 2016-04-01 10:46:37
   from "/var/www/html/MVCLearn/frontendindex.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56fd64e100b870_36615711',
+  'unifunc' => 'content_56fde10d11a9f5_75730602',
   'file_dependency' => 
   array (
     'eff4666fb5adcf8e51aead21782ffd2dac5f58a6' => 
     array (
       0 => '/var/www/html/MVCLearn/frontendindex.html',
-      1 => 1459447001,
+      1 => 1459478238,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:frontendfooter.html' => 1,
   ),
 ),false)) {
-function content_56fd64e100b870_36615711 ($_smarty_tpl) {
+function content_56fde10d11a9f5_75730602 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -77,8 +77,29 @@ $__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
 </span>
             <span class="label label-primary mysubcategory"><span class="glyphicon glyphicon-tag"></span><?php echo $_smarty_tpl->tpl_vars['val']->value['subcategory'];?>
 </span>
-            <span class="label label-success keyword"><?php echo $_smarty_tpl->tpl_vars['val']->value['keywords'];?>
+            <span class="keyword">
+                <?php
+$_from = $_smarty_tpl->tpl_vars['val']->value['keywords'];
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_keyword_1_saved_item = isset($_smarty_tpl->tpl_vars['keyword']) ? $_smarty_tpl->tpl_vars['keyword'] : false;
+$_smarty_tpl->tpl_vars['keyword'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['keyword']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['keyword']->value) {
+$_smarty_tpl->tpl_vars['keyword']->_loop = true;
+$__foreach_keyword_1_saved_local_item = $_smarty_tpl->tpl_vars['keyword'];
+?>
+                    <span class="label label-success"><?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 </span>
+                <?php
+$_smarty_tpl->tpl_vars['keyword'] = $__foreach_keyword_1_saved_local_item;
+}
+if ($__foreach_keyword_1_saved_item) {
+$_smarty_tpl->tpl_vars['keyword'] = $__foreach_keyword_1_saved_item;
+}
+?>
+            </span>
             <p><?php echo substr($_smarty_tpl->tpl_vars['val']->value['content'],0,250);?>
 </p>
             <p><a href="index.php?controller=index&method=detail&id=<?php echo $_smarty_tpl->tpl_vars['val']->value['id'];?>

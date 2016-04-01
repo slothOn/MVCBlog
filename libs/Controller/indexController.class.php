@@ -12,8 +12,8 @@ class indexController
         $pagenum=$_GET['page']?$_GET['page']:1;
         if($pagenum<=1){
             $newsobj=M('news');
-            //$data=$newsobj->findProcessedAll();
             $data=$newsobj->findLimitedNews($pagenum,3);
+            $this->processKeywords($data);
             VIEW::assign(array('data'=>$data));
             VIEW::display('frontendindex.html');
         }else{
@@ -27,6 +27,7 @@ class indexController
         $newsobj=M('news');
         $id=$_GET['id'];
         $data=$newsobj->findOne_by_id($id);
+        $this->processDetailKeywords($data);
         VIEW::assign(array('data'=>$data,'info'=>$aboutinfo));
         VIEW::display('frontenddetail.html');
     }
@@ -44,14 +45,11 @@ class indexController
         }
     }
 
-    protected function testM(){
-        M('auth');
-    }
-
     public function moreNews($pagenum){
         ChromePhp::log($pagenum);
         $newsobj=M('news');
         $data=$newsobj->findLimitedNews($pagenum,3);
+        $this->processKeywords($data);
         $arr=array("num"=>count($data),"list"=>$data);
         echo json_encode($arr);
     }
@@ -63,9 +61,27 @@ class indexController
         echo json_encode($arr);
     }
 
-    public function processKeywords($data){
+    
 
+    public function processKeywords(&$datas){
+        //foreach跟for的区别?
+        for($i=0;$i<count($datas);$i++){
+            $keywords=$datas[$i]['keywords'];
+            $keyarr=explode(',',$keywords);
+            $datas[$i]['keywords']=$keyarr;
+        }
     }
+
+    public function processDetailKeywords(&$data){
+        $keywords=$data['keywords'];
+        $keyarr=explode(',',$keywords);
+        $data['keywords']=$keyarr;
+    }
+
+    protected function testM(){
+        M('auth');
+    }
+
 }
 
 //(new indexController())->testM();

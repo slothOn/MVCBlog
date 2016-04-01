@@ -42,7 +42,12 @@ function assembleNews(id,title,keywords,category,subcategory,content){
     console.log(id+","+title+","+keywords);
     var newarticle=$(".news").clone().first();
     newarticle.find(".media-heading").html(title+"&nbsp;&nbsp;");
-    newarticle.find(".keyword").html(keywords);
+    //newarticle.find(".keyword").html(keywords);
+    var keystr="";
+    for(var i=0;i<keywords.length;i++){
+        keystr += '<span class="label label-success">'+keywords[i]+'</span>';
+    }
+    newarticle.find(".keyword").html(keystr);
     newarticle.find(".mycategory").html('<span class="glyphicon glyphicon-tag"></span>'+category);
     newarticle.find(".mysubcategory").html('<span class="glyphicon glyphicon-tag"></span>'+subcategory);
     newarticle.find("p").first().html(content);
