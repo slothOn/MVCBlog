@@ -15,7 +15,7 @@ $(function(){
             $("#news_loading").css("display","block");
             setTimeout(function(){
                 //ajax加载新的内容 jquery.getJSON相当于GET方法,参数追加到URL后,并且data是已经解析完成的json字符串
-                $.getJSON('index.php',{"page":i},function(data){
+                $.getJSON($(window).attr('location'),{"page":i},function(data){
                     $("#news_loading").css("display","none");
                     i++;
                     if(data){

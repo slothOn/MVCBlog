@@ -80,7 +80,7 @@
 						<tr>  
 			    				<th>ID</th>
 			    				<th>标题</th>
-			    				<th>作者</th>
+			    				<th>关键词</th>
 			    				<th>操作</th>
 						</tr> 
 					</thead>
@@ -90,9 +90,9 @@
 					<tr>
 						<td>{$value.id}</td>
 						<td>{$value.title}</td>
-						<td>{$value.author}</td>
-						<td><input type="image" src="img/images/icn_edit.png" title="Edit" onclick="window.location.href='index.php?controller=admin&method=newsadd&id={$value.id}'">
-							<input type="image" src="img/images/icn_trash.png" title="Trash" onclick="window.location.href='index.php?controller=admin&method=newsdel&id={$value.id}'"></td>
+						<td>{$value.keywords}</td>
+						<td><input type="image" src="img/images/icn_edit.png" title="Edit" onclick="window.location.href='index.php?controller=admin&method=newsadd&id={$value.id}&type={$type}'">
+							<input type="image" src="img/images/icn_trash.png" title="Trash" onclick="window.location.href='index.php?controller=admin&method=newsdel&id={$value.id}&type={$type}'"></td>
 					</tr>
 					{foreachelse}
 					<tr>

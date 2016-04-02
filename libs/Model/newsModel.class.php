@@ -28,7 +28,7 @@ class newsModel
     }
 
     function updateById($data,$id){
-        return DB::update($this->table,$data,"id='$id");
+        return DB::update($this->table,$data,"id=$id");
     }
 
     function findAll_orderby_dateline(){
@@ -64,7 +64,15 @@ class newsModel
 
     function findLimitedNewsWithCate($page_num,$limit_num,$category){
         if($category == 0) return $this->findLimitedNews($page_num,$limit_num);
-        $sql="select * from $this->table order by dateline desc WHERE cate_id='$category'";
+        if($category == 10){
+            $sql="select * from $this->table WHERE scate_id BETWEEN 1 AND 9 order by dateline desc";
+        }else if($category == 20){
+            $sql="select * from $this->table WHERE scate_id BETWEEN 11 AND 19 order by dateline desc";
+        }else if($category == 30){
+            $sql="select * from $this->table WHERE scate_id BETWEEN 21 AND 29 order by dateline desc";
+        }else{
+            $sql="select * from $this->table WHERE scate_id='$category' order by dateline desc";
+        }
         $skip_num=($page_num-1)*$limit_num;
         $rows=DB::findLimited($sql,$skip_num,$limit_num);
         foreach($rows as $row){

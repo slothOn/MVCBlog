@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-04-01 10:46:37
+/* Smarty version 3.1.29, created on 2016-04-01 23:36:54
   from "/var/www/html/MVCLearn/frontendfooter.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56fde10d148e33_17888365',
+  'unifunc' => 'content_56fe9596595f87_51323448',
   'file_dependency' => 
   array (
     '2585ee63e7904861615640dae6ecc6cf811dac0b' => 
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56fde10d148e33_17888365 ($_smarty_tpl) {
+function content_56fe9596595f87_51323448 ($_smarty_tpl) {
 ?>
 <footer class="row-footer">
     <div class="container">

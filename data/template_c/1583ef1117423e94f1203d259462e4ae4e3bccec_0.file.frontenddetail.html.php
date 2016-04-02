@@ -1,27 +1,28 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-04-01 10:51:01
+/* Smarty version 3.1.29, created on 2016-04-01 23:36:57
   from "/var/www/html/MVCLearn/frontenddetail.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56fde2152bb8c7_69112797',
+  'unifunc' => 'content_56fe9599058126_35731205',
   'file_dependency' => 
   array (
     '1583ef1117423e94f1203d259462e4ae4e3bccec' => 
     array (
       0 => '/var/www/html/MVCLearn/frontenddetail.html',
-      1 => 1459479060,
+      1 => 1459516578,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:frontendnav.html' => 1,
+    'file:frontendcate.html' => 1,
     'file:frontendfooter.html' => 1,
   ),
 ),false)) {
-function content_56fde2152bb8c7_69112797 ($_smarty_tpl) {
+function content_56fe9599058126_35731205 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -99,52 +100,9 @@ $_smarty_tpl->tpl_vars['keyword'] = $__foreach_keyword_0_saved_item;
                 </div>
             </div>
         </div>
-        <div class="hidden-xs col-sm-2">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Categories</h3>
-                </div>
-                <div class="panel-group" id="accordion" style="margin: 3px">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" id="headingTech">
-                            <a  class="btn-block" data-toggle="collapse" data-parent="#accordion" data-target="#technology">
-                                <h3 class="panel-title">Tech</h3></a>
-                        </div>
-                        <div class="panel-collapse collapse in" id="technology">
-                            <ul class="panel-body list-group">
-                                <li class="list-group-item"><a href="index.php?method=category&cate=1">Algorithm</a></li>
-                                <li class="list-group-item"><a href="index.php?method=category&cate=2">Web&Cloud</a></li>
-                                <li class="list-group-item"><a href="index.php?method=category&cate=3">Mobile</a></li>
-                                <li class="list-group-item"><a href="index.php?method=category&cate=4">CS Basics</a></li>
-                                <li class="list-group-item"><a href="index.php?method=category&cate=5">Advanced</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" id="headingLife">
-                            <a  class="btn-block" data-toggle="collapse" data-parent="#accordion" data-target="#life">
-                                <h3 class="panel-title">Life</h3></a>
-                        </div>
-                        <div class="panel-collapse collapse" id="life">
-                            <ul class="panel-body list-group">
-                                <li class="list-group-item">Travel</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" id="headingService">
-                            <a  class="btn-block" data-toggle="collapse" data-parent="#accordion" data-target="#service">
-                                <h3 class="panel-title">Service</h3></a>
-                        </div>
-                        <div class="panel-collapse collapse" id="service">
-                            <ul class="panel-body list-group">
-                                <li class="list-group-item">留学</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:frontendcate.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
     </div>
 
     <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:frontendfooter.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);

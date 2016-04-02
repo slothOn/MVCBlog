@@ -83,9 +83,17 @@
 								<label>内容</label>
 								<textarea rows="12" name="content">{$data.content|default:''}</textarea>
 							</fieldset>
-							<fieldset style="width:48%; float:left; margin-right: 3%;">
+							<fieldset style="width:46%; height:50px;float:left; margin-right: 3%; margin-top: 3px">
 								<label>关键字(英文逗号分隔)</label>
 								<input type="text" name="keywords" style="width:92%;" value="{$data.keywords|default:''}">
+							</fieldset>
+							<fieldset style="width:46%; height:50px;float:left; margin-right: 3%; margin-top: 3px">
+								<label>文章分类</label>
+								<select name="scate_id">
+									{foreach $catelist as $cate}
+									<option value="{$cate['scate_id']}">{$cate['scate_name']}</option>
+									{/foreach}
+								</select>
 							</fieldset>
 							<div class="clear"></div>
 					</div>

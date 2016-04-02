@@ -15,7 +15,7 @@ class My_mysqli
      * @param string $error
      */
     function err($error){
-        die("对不起，您的操作有误，错误原因为：".$error);//die有两种作用 输出 和 终止   相当于  echo 和 exit 的组合
+        die("对不起，您的操作有误，错误原因为：".$error);
     }
 
     /**
@@ -30,8 +30,8 @@ class My_mysqli
      **/
     function connect($config){
         extract($config);
-        $this->dbc=mysqli_connect($dbhost,$dbuser,$dbpsw,$dbname) or die(mysqli_error($dbc));
-        //mysqli_query($dbc,"set names ".$dbcharset);
+        $this->dbc=mysqli_connect($dbhost,$dbuser,$dbpsw,$dbname) or die(mysqli_error($this->dbc));
+        mysqli_set_charset($this->dbc,"utf8");
     }
 
     function query($sql){
@@ -39,7 +39,7 @@ class My_mysqli
             $this->err("数据库尚未连接");
         }
         if(!($result = mysqli_query($this->dbc,$sql))){
-            $this->err($sql."<br />".mysqli_error($this->dbc));//mysql_error 报错
+            $this->err($sql."<br />".mysqli_error($this->dbc));
         }else{
             return $result;
         }
@@ -80,13 +80,13 @@ class My_mysqli
         }
         foreach($arr as $key=>$value){//foreach循环数组
             $value = mysqli_real_escape_string($this->dbc,$value);
-            $keyArr[] = "`".$key."`";//把$arr数组当中的键名保存到$keyArr数组当中
-            $valueArr[] = "'".$value."'";//把$arr数组当中的键值保存到$valueArr当中，因为值多为字符串，而sql语句里面insert当中如果值是字符串的话要加单引号，所以这个地方要加上单引号
+            $keyArr[] = "`".$key."`";
+            $valueArr[] = "'".$value."'";
         }
-        $keys = implode(",",$keyArr);//implode函数是把数组组合成字符串 implode(分隔符，数组)
+        $keys = implode(",",$keyArr);
         $values = implode(",",$valueArr);
-        $sql = "insert into ".$table."(".$keys.") values(".$values.")";//sql的插入语句  格式：insert into 表(多个字段)values(多个值)
-        $this->query($sql);//调用类自身的query(执行)方法执行这条sql语句  注：$this指代自身
+        $sql = "insert into ".$table."(".$keys.") values(".$values.")";
+        $this->query($sql);
         return mysqli_insert_id($this->dbc);
     }
 
@@ -99,7 +99,7 @@ class My_mysqli
             $keyAndvalueArr[] = "`".$key."`='".$value."'";
         }
         $keyAndvalues = implode(",",$keyAndvalueArr);
-        $sql = "update ".$table." set ".$keyAndvalues." where ".$where;//修改操作 格式 update 表名 set 字段=值 where 条件
+        $sql = "update ".$table." set ".$keyAndvalues." where ".$where;
         $this->query($sql);
     }
 

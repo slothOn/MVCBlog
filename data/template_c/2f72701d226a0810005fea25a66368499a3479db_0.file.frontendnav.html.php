@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-04-01 10:46:37
+/* Smarty version 3.1.29, created on 2016-04-02 16:06:48
   from "/var/www/html/MVCLearn/frontendnav.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56fde10d13c556_06657186',
+  'unifunc' => 'content_56ff7d98eb3c69_87009885',
   'file_dependency' => 
   array (
     '2f72701d226a0810005fea25a66368499a3479db' => 
     array (
       0 => '/var/www/html/MVCLearn/frontendnav.html',
-      1 => 1459408305,
+      1 => 1459584293,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56fde10d13c556_06657186 ($_smarty_tpl) {
+function content_56ff7d98eb3c69_87009885 ($_smarty_tpl) {
 ?>
 <nav class="nav navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
@@ -47,18 +47,18 @@ function content_56fde10d13c556_06657186 ($_smarty_tpl) {
                         <ul class="dropdown-menu">
                             <li class="dropdown-header" style="color: white;font-size: larger">文章分类</li>
                             <li class="divider"></li>
-                            <li><a href="#">Tech</a></li>
-                            <li><a href="#">Life</a></li>
-                            <li><a href="#"><em>留学</em></a></li>
+                            <li><a href="index.php?cate=10">Tech</a></li>
+                            <li><a href="index.php?cate=20">Life</a></li>
+                            <li><a href="index.php?cate=30"><em>留学</em></a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <span class="glyphicon glyphicon-list-alt"></span>资源<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">GIS工具下载</a></li>
-                            <li><a href="#">GIS课程资料</a></li>
-                            <li><a href="#">GIS考试作业</a></li>
+                            <li><a href="index.php?method=resource&title=GIS工具下载">GIS工具下载</a></li>
+                            <li><a href="index.php?method=resource&title=GIS课程资料">GIS课程资料</a></li>
+                            <li><a href="index.php?method=resource&title=GIS考试作业">GIS考试作业</a></li>
                         </ul>
                     </li>
                     <li><a href="mailto:zxcheng95@gmail.com"><i class="fa fa-envelope"></i>Contact</a></li>

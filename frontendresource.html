@@ -37,16 +37,16 @@
         <div class="col-xs-12 col-sm-10">
             <div class="news row row-content" style="margin-left: 0px;margin-right: 5px">
                 <div class="col-xs-12">
-                    <h2 class="media-heading">{$data['title']}&nbsp;&nbsp;</h2>
+                    <h2 class="media-heading">{$data['title']}&nbsp;&nbsp;
+                        <span class="label label-danger">持续更新中...</span>
+                    </h2>
                     <br>
-                    <span class="label label-danger mycategory"><span class="glyphicon glyphicon-tag"></span>{$data['category']}</span>
-                    <span class="label label-primary mysubcategory"><span class="glyphicon glyphicon-tag"></span>{$data['subcategory']}</span>
                     <span class="keyword">
                         {foreach $data['keywords'] as $keyword}
-                            <span class="label label-success">{$keyword}</span>
+                        <span class="label label-success mysubcategory"><span class="glyphicon glyphicon-tag"></span>{$keyword}</span>
                         {/foreach}
                     </span>
-                    <p>{$data['content']} </p>
+                    <p>{$data['content']}</p>
                 </div>
             </div>
         </div>

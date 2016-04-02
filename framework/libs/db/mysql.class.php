@@ -64,7 +64,6 @@ class Mysql
             //ChromePhp::log('rs:'.var_dump($rs));
             $list[]=$rs;
         }
-        //ChromePhp::log(print_r($list));
         return $list;
     }
 

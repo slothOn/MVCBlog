@@ -1,0 +1,48 @@
+<div class="hidden-xs col-sm-2">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Categories</h3>
+        </div>
+        <div class="panel-group" id="accordion" style="margin: 3px">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="headingTech">
+                    <a  class="btn-block" data-toggle="collapse" data-parent="#accordion" data-target="#technology">
+                        <h3 class="panel-title">Tech</h3></a>
+                </div>
+                <div class="panel-collapse collapse in" id="technology">
+                    <ul class="panel-body list-group">
+                        {foreach $catelist['Tech'] as $catetech}
+                        <li class="list-group-item"><a href="index.php?cate={$catetech['scate_id']}">{$catetech['scate_name']}</a></li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" id="headingLife">
+                    <a  class="btn-block" data-toggle="collapse" data-parent="#accordion" data-target="#life">
+                        <h3 class="panel-title">Life</h3></a>
+                </div>
+                <div class="panel-collapse collapse" id="life">
+                    <ul class="panel-body list-group">
+                        {foreach $catelist['Life'] as $catelife}
+                        <li class="list-group-item"><a href="index.php?cate={$catelife['scate_id']}">{$catelife['scate_name']}</a></li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" id="headingService">
+                    <a  class="btn-block" data-toggle="collapse" data-parent="#accordion" data-target="#service">
+                        <h3 class="panel-title">Service</h3></a>
+                </div>
+                <div class="panel-collapse collapse" id="service">
+                    <ul class="panel-body list-group">
+                        {foreach $catelist['Service'] as $cateservice}
+                        <li class="list-group-item"><a href="index.php?cate={$cateservice['scate_id']}">{$cateservice['scate_name']}</a></li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

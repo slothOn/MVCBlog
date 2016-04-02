@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-04-01 10:46:37
+/* Smarty version 3.1.29, created on 2016-04-01 23:36:54
   from "/var/www/html/MVCLearn/frontendindex.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56fde10d11a9f5_75730602',
+  'unifunc' => 'content_56fe95965234b4_18901339',
   'file_dependency' => 
   array (
     'eff4666fb5adcf8e51aead21782ffd2dac5f58a6' => 
     array (
       0 => '/var/www/html/MVCLearn/frontendindex.html',
-      1 => 1459478238,
+      1 => 1459498683,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:frontendfooter.html' => 1,
   ),
 ),false)) {
-function content_56fde10d11a9f5_75730602 ($_smarty_tpl) {
+function content_56fe95965234b4_18901339 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -102,7 +102,7 @@ $_smarty_tpl->tpl_vars['keyword'] = $__foreach_keyword_1_saved_item;
             </span>
             <p><?php echo substr($_smarty_tpl->tpl_vars['val']->value['content'],0,250);?>
 </p>
-            <p><a href="index.php?controller=index&method=detail&id=<?php echo $_smarty_tpl->tpl_vars['val']->value['id'];?>
+            <p><a href="index.php?method=detail&id=<?php echo $_smarty_tpl->tpl_vars['val']->value['id'];?>
 " class="btn btn-primary btn-xs">More &#187;</a></p>
         </div>
     </div>

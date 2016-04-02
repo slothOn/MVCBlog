@@ -67,11 +67,24 @@ class adminController
         }
     }
 
+    function getAllCates(){
+        $cateobj=M('subcate');
+        return $cateobj->findAllCate();
+    }
+
     function newsAdd(){
+        $type=$_GET['type']?$_GET['type']:0;
         if(!isset($_POST['submit'])){
-            $data=$this->getNewsInfo();
-            VIEW::assign(array('data'=>$data));
-            VIEW::display('newsadd.html');
+            if($type == 1){
+                $data=$this->getResInfo();
+                VIEW::assign(array('data'=>$data));
+                VIEW::display('resadd.html');
+            }else {
+                $data=$this->getNewsInfo();
+                $catelist=$this->getAllCates();
+                VIEW::assign(array('data'=>$data,'catelist'=>$catelist));
+                VIEW::display('newsadd.html');
+            }
         }else{
             $this->newssubmit();
         }
@@ -85,19 +98,29 @@ class adminController
         $title = daddslashes($title);
         $content = daddslashes($content);
         $keywords = daddslashes($keywords);
-        $newsobj=M('news');
         $data=array(
             'title'=>$title,
             'content'=>$content,
-            'keywords'=>$keywords
+            'keywords'=>$keywords,
+            //'scate_id'=>$scate_id
         );
+        if(isset($scate_id)){
+            $scate_id = daddslashes($scate_id);
+            $newsobj=M('news');
+            $data['scate_id']=$scate_id;
+            $flag=0;
+        }else{
+            $newsobj=M('resource');
+            $flag=1;
+        }
+
         //判断是插入还是修改
         if($_POST['id'] != ''){
             $newsobj->updateById($data,intval($_POST['id']));
-            $this->showMessage('修改成功','index.php?controller=admin&method=newslist');
+            $this->showMessage('修改成功',"index.php?controller=admin&method=newslist&type=$flag");
         }else{
             $newsobj->insert($data);
-            $this->showMessage('插入成功','index.php?controller=admin&method=newslist');
+            $this->showMessage('插入成功',"index.php?controller=admin&method=newslist&type=$flag");
         }
     }
 
@@ -111,21 +134,37 @@ class adminController
         }
     }
 
+    private function getResInfo(){
+        if(isset($_GET['id'])){
+            $id=intval($_GET['id']);
+            $news=M('resource');
+            return $news->findOne_by_id($id);
+        }else{
+            return array();
+        }
+    }
+
     public function newslist(){
-        $newsobj = M('news');
-        $data=$newsobj->findAll_orderby_dateline();
-        //ChromePhp::log($data);
-        VIEW::assign(array('data'=>$data));
+        $type=$_GET['type']?$_GET['type']:0;
+        if($type == 1){
+            $dbobj=M('resource');
+        }
+        else $dbobj = M('news');
+        $data=$dbobj->findAll_orderby_dateline();
+        VIEW::assign(array('data'=>$data,'type'=>$type));
         VIEW::display('newslist.html');
     }
 
     public function newsdel(){
-        $newsobj=M('news');
+        $type=$_GET['type']?$_GET['type']:0;
+        if($type == 1){
+            $newsobj=M('resource');
+        }else $newsobj=M('news');
         $id=$_GET['id'];
         if($newsobj->deleteById($id)){
-            $this->showMessage('删除成功','index.php?controller=admin&method=newslist');
+            $this->showMessage('删除成功','index.php?controller=admin&method=newslist'."&type=$type");
         }else{
-            $this->showMessage('删除失败','index.php?controller=admin&method=newslist');
+            $this->showMessage('删除失败','index.php?controller=admin&method=newslist'."&type=$type");
         }
     }
 
