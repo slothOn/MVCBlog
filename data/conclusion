@@ -1,6 +1,0 @@
-Smarty模版语法
-MVC框架(Model,View,Controller)
-封装framework
-DB,VIEW工厂类，作为数据操作和视图引擎，为方便使用方法使用全局方法
-实现PC类作为启动引擎，里面完成对DB类和VIEW类的初始化以及配置信息的加载
-单入口应用，通过传入入口的不同参数来启动不同的控制器，控制器中动态加载不同的MODEL类，MODEL实现数据获取和清洗
