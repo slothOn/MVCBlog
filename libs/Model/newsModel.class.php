@@ -101,8 +101,7 @@ class newsModel
         if(is_array($result['matches'])){
             $matches=$result['matches'];
             $vals=array_values($matches);
-            ChromePhp::log($vals);
-	    	
+
             foreach($vals as $val){
                 $vid = $val['id'];
                 $scate_id = $val['attrs']['scate_id'];
