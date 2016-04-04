@@ -11,14 +11,23 @@ class indexController
     public function index(){
         $pagenum=$_GET['page']?$_GET['page']:1;
         $scate_id=$_GET['cate']?$_GET['cate']:0;
+        $searchkeywords=$_GET['searchkeywords']?$_GET['searchkeywords']:'';
         if($pagenum<=1){
             $newsobj=M('news');
-            $data=$newsobj->findLimitedNewsWithCate($pagenum,3,$scate_id);
+            if(empty($searchkeywords) || $searchkeywords == ''){
+                $data=$newsobj->findLimitedNewsWithCate($pagenum,3,$scate_id);
+            }else{
+                $data=$newsobj->findLimitedNewsWithKeywords($pagenum, 3, $searchkeywords);
+            }
             $this->processKeywords($data);
             VIEW::assign(array('data'=>$data));
             VIEW::display('frontendindex.html');
         }else{
-            $this->moreNews($pagenum,$scate_id);
+            if(empty($searchkeywords) || $searchkeywords ==''){
+                $this->moreNews($pagenum,$scate_id);    
+            }else{
+                $this->moreNewsWithKeywords($pagenum, $searchkeywords);
+            }
         }
     }
 
@@ -44,6 +53,14 @@ class indexController
     public function moreNews($pagenum,$category){
         $newsobj=M('news');
         $data=$newsobj->findLimitedNewsWithCate($pagenum,3,$category);
+        $this->processKeywords($data);
+        $arr=array("num"=>count($data),"list"=>$data);
+        echo json_encode($arr);
+    }
+
+    public function moreNewsWithKeywords($pagenum, $keywords){
+        $newsobj=M('news');
+        $data=$newsobj->findLimitedNewsWithKeywords($pagenum, 3, $keywords);
         $this->processKeywords($data);
         $arr=array("num"=>count($data),"list"=>$data);
         echo json_encode($arr);
@@ -81,7 +98,7 @@ class indexController
         VIEW::assign(array('data'=>$data,'catelist'=>$catelist));
         VIEW::display('frontendresource.html');
     }
-
+    /*
     public function keyword(){
         $searchkeyword=daddslashes($_POST['search_words']);
 	ChromePhp::log($searchkeyword);
@@ -95,21 +112,20 @@ class indexController
         $sphinx->SetMatchMode(SPH_MATCH_ALL);
         $sphinx->SetLimits(0, 3);
         $result = $sphinx->Query($searchkeyword,"*");
-        //ChromePhp::log("result:".$result);
-	
-	if($result === false){
+        	
+        if($result === false){
             $this->showMessage("关键字错误", "index.php");
         }
         if(is_array($result['matches'])){
             $matches=$result['matches'];
             ChromePhp::log($matches);
-            $ids=array_keys($matches);
-            ChromePhp::log($ids);
-        }
-	
-	VIEW::display('frontendindex.html');
-    }
+            $vals=array_values($matches);
 
+        }
+        	
+        VIEW::display('frontendindex.html');
+    }
+    */
     protected function testM(){
         M('auth');
     }

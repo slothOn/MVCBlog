@@ -64,14 +64,17 @@ class newsModel
 
     function findLimitedNewsWithCate($page_num,$limit_num,$category){
         if($category == 0) return $this->findLimitedNews($page_num,$limit_num);
+        $sqlbasic = "select id, title, keywords, content, dateline, news.scate_id AS scate_id,
+          scate_name AS subcategory, cate_name AS category from $this->table
+          INNER JOIN subcate ON $this->table.scate_id=subcate.scate_id";
         if($category == 10){
-            $sql="select * from $this->table WHERE scate_id BETWEEN 1 AND 9 order by dateline desc";
+            $sql=$sqlbasic." WHERE $this->table.scate_id BETWEEN 1 AND 9 order by dateline desc";
         }else if($category == 20){
-            $sql="select * from $this->table WHERE scate_id BETWEEN 11 AND 19 order by dateline desc";
+            $sql=$sqlbasic." WHERE $this->table.scate_id BETWEEN 11 AND 19 order by dateline desc";
         }else if($category == 30){
-            $sql="select * from $this->table WHERE scate_id BETWEEN 21 AND 29 order by dateline desc";
+            $sql=$sqlbasic." WHERE $this->table.scate_id BETWEEN 21 AND 29 order by dateline desc";
         }else{
-            $sql="select * from $this->table WHERE scate_id='$category' order by dateline desc";
+            $sql=$sqlbasic." WHERE $this->table.scate_id='$category'  order by dateline desc";
         }
         $skip_num=($page_num-1)*$limit_num;
         $rows=DB::findLimited($sql,$skip_num,$limit_num);
@@ -80,4 +83,38 @@ class newsModel
         }
         return $rows;
     }
+
+    function findLimitedNewsWithKeywords($pagenum, $limit_num, $keywords){
+        $searchkeyword=daddslashes($keywords);
+        $skip_num=($pagenum-1)*$limit_num;
+        $sphinx = new SphinxClient();
+        $server = "localhost";
+        $port = 9312;
+        $sphinx->SetServer($server, $port);
+        $sphinx->SetConnectTimeout(3);
+        $sphinx->SetMaxQueryTime(2000);
+        $sphinx->SetArrayResult(true);
+        $sphinx->SetMatchMode(SPH_MATCH_ALL);
+        $sphinx->SetLimits($skip_num, $limit_num);
+        $result = $sphinx->Query($searchkeyword,"*");
+        $rows = array();
+        if(is_array($result['matches'])){
+            $matches=$result['matches'];
+            $vals=array_values($matches);
+
+            foreach($vals as $val){
+                $vid = $vals['id'];
+                $scate_id = $vals['attrs']['scate_id'];
+                $sqlbasic = "select id, title, keywords, content, dateline, news.scate_id AS scate_id,
+          scate_name AS subcategory, cate_name AS category from $this->table
+          INNER JOIN subcate ON $this->table.scate_id=subcate.scate_id";
+                $sql = $sqlbasic." WHERE $this->table.id = $vid";
+                $row = DB::findOne($sql);
+                array_push($rows, $row);
+            }
+
+        }
+        return $rows;
+    }
+
 }
