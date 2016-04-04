@@ -84,6 +84,7 @@ class indexController
 
     public function keyword(){
         $searchkeyword=daddslashes($_POST['search_words']);
+	ChromePhp::log($searchkeyword);
         $sphinx = new SphinxClient();
         $server = "localhost";
         $port = 9312;
@@ -93,15 +94,20 @@ class indexController
         $sphinx->SetArrayResult(true);
         $sphinx->SetMatchMode(SPH_MATCH_ALL);
         $sphinx->SetLimits(0, 3);
-        $result = $sphinx->Query($searchkeyword,"title,keywords,content");
-        if($result === false){
+        $result = $sphinx->Query($searchkeyword,"*");
+        //ChromePhp::log("result:".$result);
+	
+	if($result === false){
             $this->showMessage("关键字错误", "index.php");
         }
         if(is_array($result['matches'])){
             $matches=$result['matches'];
             ChromePhp::log($matches);
             $ids=array_keys($matches);
+            ChromePhp::log($ids);
         }
+	
+	VIEW::display('frontendindex.html');
     }
 
     protected function testM(){
