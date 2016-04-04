@@ -101,10 +101,11 @@ class newsModel
         if(is_array($result['matches'])){
             $matches=$result['matches'];
             $vals=array_values($matches);
-
+            ChromePhp::log($vals);
+	    	
             foreach($vals as $val){
-                $vid = $vals['id'];
-                $scate_id = $vals['attrs']['scate_id'];
+                $vid = $val['id'];
+                $scate_id = $val['attrs']['scate_id'];
                 $sqlbasic = "select id, title, keywords, content, dateline, news.scate_id AS scate_id,
           scate_name AS subcategory, cate_name AS category from $this->table
           INNER JOIN subcate ON $this->table.scate_id=subcate.scate_id";
@@ -112,7 +113,7 @@ class newsModel
                 $row = DB::findOne($sql);
                 array_push($rows, $row);
             }
-
+	    	
         }
         return $rows;
     }
