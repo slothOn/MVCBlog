@@ -10,6 +10,6 @@ $configs=array(
         'LeftDelimiter' => '{',  'RightDelimiter' => '}',  'TemplateDir' => 'tpl',  'CompileDir' => 'data/template_c'
     ),
     'db_config'=>array(
-        'dbhost' => 'localhost', 'dbuser'=>'root', 'dbpsw' => '20120607' , 'dbname' => 'newsreport', 'dbcharset' => 'utf8'
+        'dbhost' => 'localhost', 'dbuser'=>'xxx', 'dbpsw' => 'xxx' , 'dbname' => 'xxx', 'dbcharset' => 'utf8'
     )
 );
