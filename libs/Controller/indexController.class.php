@@ -98,34 +98,12 @@ class indexController
         VIEW::assign(array('data'=>$data,'catelist'=>$catelist));
         VIEW::display('frontendresource.html');
     }
-    /*
-    public function keyword(){
-        $searchkeyword=daddslashes($_POST['search_words']);
-	ChromePhp::log($searchkeyword);
-        $sphinx = new SphinxClient();
-        $server = "localhost";
-        $port = 9312;
-        $sphinx->SetServer($server, $port);
-        $sphinx->SetConnectTimeout(3);
-        $sphinx->SetMaxQueryTime(2000);
-        $sphinx->SetArrayResult(true);
-        $sphinx->SetMatchMode(SPH_MATCH_ALL);
-        $sphinx->SetLimits(0, 3);
-        $result = $sphinx->Query($searchkeyword,"*");
-        	
-        if($result === false){
-            $this->showMessage("关键字错误", "index.php");
-        }
-        if(is_array($result['matches'])){
-            $matches=$result['matches'];
-            ChromePhp::log($matches);
-            $vals=array_values($matches);
 
-        }
-        	
-        VIEW::display('frontendindex.html');
+    public function about(){
+        $view = V('about');
+        $view->display();
     }
-    */
+
     protected function testM(){
         M('auth');
     }

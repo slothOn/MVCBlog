@@ -15,66 +15,7 @@
     <title>新闻页</title>
 </head>
 <body>
-    <nav class="nav navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <!--响应式navbar布局-->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.php">HOME</a>
-        </div>
-        <div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="navbar-nav nav">
-                    <li><a href="index.php">
-                        <!--glyphicon is part of bootstrap-->
-                        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>主页</a>
-                    </li>
-                    <li class="active"><a href="frontendabout.html"><span class="glyphicon glyphicon-info-sign"></span>关于</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <span class="glyphicon glyphicon-list-alt"></span>Service<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-header" style="color: white;font-size: larger">文章分类</li>
-                            <li class="divider"></li>
-                            <li><a href="index.php?cate=10">Tech</a></li>
-                            <li><a href="index.php?cate=20">Life</a></li>
-                            <li><a href="index.php?cate=30"><em>留学</em></a></li>
-                        </ul>
-                    </li>
-                    <li><a href="mailto:zxcheng95@gmail.com"><i class="fa fa-envelope"></i>Contact</a></li>
-                </ul>
-                <ul class="navbar-nav nav navbar-right">
-                    <li>
-                        <form class="form-inline" style="padding-top: 8px">
-                            <div class="input-group">
-                                <input type="text" class="form-control">
-                                <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
-                            </div>
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</nav>
-<header class="jumbotron">
-    <!-- Main component for a primary marketing message or call to action -->
-    <div class="container">
-        <div class="row row-header">
-            <div class="col-xs-12">
-                <h1 style="text-align: right">Geography 转学 CS</h1>
-                <p style="padding:40px;"></p>
-                <p style="text-align: right; padding-right: 150px">基于Bootstrap,PHP,Smarty模版构建</p>
-            </div>
-        </div>
-    </div>
-</header>
-
+{include file='frontendnav.html'}
 <div class="container">
     <div class="row">
         <div></div>
@@ -82,7 +23,7 @@
     <div class="row">
         <div class="col-xs-12">
             <ol class="breadcrumb">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li class="active">About me</li>
             </ol>
         </div>
@@ -95,18 +36,18 @@
 <div class="container">
     <div class="col-xs-12 col-sm-10">
         <div class="row row-content-about-about" id="history">
-            <h2>Family</h2>
+            <h2>我</h2>
             <div class="col-xs-12">
-                <p>Started in 2010, Ristorante con Fusion quickly established itself as a culinary icon par excellence in Hong Kong. With its unique brand of world fusion cuisine that can be found nowhere else, it enjoys patronage from the A-list clientele in Hong Kong.  Featuring four of the best three-star Michelin chefs in the world, you never know what will arrive on your plate the next time you visit us.</p>
-                <p>The restaurant traces its humble beginnings to <em>The Frying Pan</em>, a successful chain started by our CEO, Mr. Peter Pan, that featured for the first time the world's best cuisines in a pan.</p>
+                <p>GISer 一枚</p>
+                <p>出于生计和兴趣</p>
+                <p>目前在转CS路上不断奋进</p>
             </div>
+
             <div class="well col-xs-12">
                 <blockquote>
-                    <p>You better cut the pizza in four pieces because
-                        I'm not hungry enough to eat six.</p>
+                    <p>My heart is in the work...</p>
                     <footer>
-                        <cite>The Wit and Wisdom of Yogi Berra,
-                            P. Pepe, Diversion Books, 2014</cite>
+                        <cite>Andrew Carnegie, 1900</cite>
                     </footer>
                 </blockquote>
             </div>
@@ -118,80 +59,22 @@
 
         </div>
         <div class="row row-content-about-about" id="Experience">
-            <h2>Experience</h2>
-            <div class="row">
-                <div class="panel-group" id="accordion">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" id="headingPeter">
-                            <a class="btn-block" data-toggle="collapse" data-parent="#accordion" data-target="#petter">
-                                <h3 class="panel-title">
-                                    Peter Pan <small>Chief Epicurious Officer</small>
-                                </h3>
-                            </a>
-                        </div>
-                        <div class="panel-collapse collapse in" id="petter">
-                            <div class="panel-body">
-                                <p>
-                                    Our CEO, Peter, credits his hardworking East Asian immigrant parents who undertook
-                                    the arduous journey to the shores of America with the intention of giving their children the best future.
-                                    His mother's wizardy in the kitchen whipping up the tastiest dishes with whatever is available inexpensively
-                                    at the supermarket, was his first inspiration to create the fusion cuisines for which <em>The Frying Pan</em> became well known.
-                                    He brings his zeal for fusion cuisines to this restaurant, pioneering cross-cultural culinary connections.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" id="headingDanny">
-                            <a  class="btn-block" data-toggle="collapse" data-parent="#accordion" data-target="#danny"><h3 class="panel-title">Dhanasekaran Witherspoon <small>Chief Food Officer</small> </h3></a>
-                        </div>
-                        <div class="panel-collapse collapse" id="danny">
-                            <div class="panel-body">
-                                <p>Our CFO, Danny, as he is affectionately referred to by his colleagues, comes from a long established family tradition in farming and produce. His experiences growing up on a farm in the Australian outback gave him great appreciation for varieties of food sources. As he puts it in his own words, <em>Everything that runs, wins, and everything that stays, pays!</em></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" id="headingTang">
-                            <a class="btn-block" data-toggle="collapse" data-parent="#accordion" data-target="#tang"><h3 class="panel-title">Agumbe Tang <small>Chief Taste Officer</small> </h3></a>
-                        </div>
-                        <div class="panel-collapse collapse" id="tang">
-                            <div class="panel-body">
-                                <p>Blessed with the most discerning gustatory sense, Agumbe, our CFO, personally ensures that every dish that we serve meets his exacting tastes. Our chefs dread the tongue lashing that ensues if their dish does not meet his exacting standards. He lives by his motto, <em>You click only if you survive my lick.</em></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" id="headingsomayya">
-                            <a class="btn-block" data-toggle="collapse" data-parent="#accordion" data-target="#somayya"><h3 class="panel-title">Alberto Somayya <small>Executive Chef</small></h3></a>
-                        </div>
-                        <div class="panel-collapse collapse" id="somayya">
-                            <div class="panel-body">
-                                <p>Award winning three-star Michelin chef with wide International experience having worked closely with whos-who in the culinary world, he specializes in creating mouthwatering Indo-Italian fusion experiences. He says, <em>Put together the cuisines from the two craziest cultures, and you get a winning hit! Amma Mia!</em></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <h2>它</h2>
+            <div class="col-xs-12">
+                <p>一个个人博客站点</p>
+                <p>技术、生活与服务</p>
+                <p>还有各种GIS资源～（对,0.0作业放上来就是骗流量的）</p>
             </div>
         </div>
         <div class="row row-content-about-about" id="projects">
-            <h2>Projects</h2>
+            <h2>我们</h2>
             <div class="col-xs-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">projects At a Glance</h3>
+                        <h3 class="panel-title">Experience</h3>
                     </div>
                     <div class="panel-body">
-                        <dl class="dl-horizontal">
-                            <dt>Started</dt>
-                            <dd>3 Feb. 2013</dd>
-                            <dt>Major Stake Holder</dt>
-                            <dd>HK Find Food Inc.</dd>
-                            <dt>Last Year's Turnover</dt>
-                            <dd>$1,250,375</dd>
-                            <dt>Employees</dt>
-                            <dd>40</dd>
-                        </dl>
+                        但愿哪天能在这地方写点上档次的东西.
                     </div>
                 </div>
 
@@ -202,55 +85,16 @@
     </div>
     <nav class="hidden-xs col-sm-2" id="myscroll">
         <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="400" >
-            <li><a href="#history">Family</a></li>
-            <li><a href="#Experience">Experience</a></li>
-            <li><a href="#projects">projects</a></li>
+            <li><a href="#history">我</a></li>
+            <li><a href="#Experience">它</a></li>
+            <li><a href="#projects">我们</a></li>
         </ul>
     </nav>
 
     <p style="padding:20px;"></p>
 </div>
 
-<footer class="row-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-6 col-sm-3">
-                <h5>Links</h5>
-                <ul class="list-unstyled">
-                    <li><a href="index.html#">Home</a></li>
-                    <li><a href="about.html#">About</a></li>
-                    <li><a href="#">Service</a></li>
-                    <li><a href="contactus.html#">Contact</a></li>
-                </ul>
-            </div>
-            <div class="col-xs-6 col-sm-5">
-                <h5>Our Address</h5>
-                <address>
-                    <!--awesome font-->
-                    129 Luoyu Road<br>
-                    School of Resource and Environment<br>
-                    Wuhan University, China<br>
-                    Tel:<i class="fa fa-phone"></i>+18202721163<br>
-                    Email:<i class="fa fa-envelope"></i><a href="mailto:zxcheng95@gmail.com">zxcheng95@gmail.com</a><br>
-                </address>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-                <div class="nav navbar-nav" style="padding: 40px 10px;">
-                    <a class="btn btn-social-icon btn-google-plus" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
-                    <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
-                    <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a>
-                    <a class="btn btn-social-icon btn-wechat" href="http://twitter.com/"><i class="fa fa-wechat"></i></a>
-                    <a class="btn btn-social-icon btn-weibo" href="http://youtube.com/"><i class="fa fa-weibo"></i></a>
-                    <a class="btn btn-social-icon" href="mailto:zxcheng95@gmail.com"><i class="fa fa-envelope-o"></i></a>
-                </div>
-            </div>
-            <div class="col-xs-12">
-                <p style="padding:10px;"></p>
-                <p align="center"> Copyright 2016 X. Zhou</p>
-            </div>
-        </div>
-    </div>
-</footer>
+{include file='frontendfooter.html'}
 <script src="img/js/jquery.min.js"></script>
 <script src="img/js/bootstrap.min.js"></script>
 </body>
