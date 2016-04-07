@@ -91,8 +91,15 @@
 						<td>{$value.id}</td>
 						<td>{$value.title}</td>
 						<td>{$value.keywords}</td>
-						<td><input type="image" src="img/images/icn_edit.png" title="Edit" onclick="window.location.href='index.php'">
-							<input type="image" src="img/images/icn_trash.png" title="Trash" onclick="window.location.href='index.php'"></td>
+						<td>
+							{if $type eq 1}
+							<input type="image" src="img/images/icn_edit.png" title="Edit" onclick="window.location.href='index.php?controller=admin&method=newsAdd&id={$value.id}&type=1'">
+							<input type="image" src="img/images/icn_trash.png" title="Trash" onclick="window.location.href='index.php?controller=admin&method=newsdel&id={$value.id}&type=1'">
+							{else}
+							<input type="image" src="img/images/icn_edit.png" title="Edit" onclick="window.location.href='index.php?controller=admin&method=newsAdd&id={$value.id}'">
+							<input type="image" src="img/images/icn_trash.png" title="Trash" onclick="window.location.href='index.php?controller=admin&method=newsdel&id={$value.id}'">
+							{/if}
+						</td>
 					</tr>
 					{foreachelse}
 					<tr>
