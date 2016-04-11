@@ -9,7 +9,7 @@
 //factory
 class VIEW
 {
-    public static $view;
+    private static $view;
 
     public static function init($viewtype,$configs){
         self::$view=new $viewtype;

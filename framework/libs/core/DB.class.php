@@ -9,7 +9,7 @@
 //工厂模式
 class DB
 {
-    public static $db;
+    private static $db;
 
     public static function init($dbname,$config){
         self::$db=new $dbname();

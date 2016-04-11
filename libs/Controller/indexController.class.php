@@ -46,7 +46,19 @@ class indexController
         $id=$_GET['id'];
         $data=$newsobj->findOne_by_id($id);
         $this->processDetailKeywords($data);
-        VIEW::assign(array('data'=>$data,'catelist'=>$catelist));
+
+        $commobj = M('comment');
+        $comms = $commobj->findCommWithId($id);
+        $commsnum = $commobj->countWithId($id);
+        $username = "";
+        session_start();
+        if(!empty($_SESSION['QC_userInfo'])){
+            $username = $_SESSION['QC_userInfo']['nickname'];
+            $usericon = $_SESSION['QC_userInfo']['figureurl_qq_1'];
+        }
+
+        VIEW::assign(array('data'=>$data,'catelist'=>$catelist, 'username'=>$username,
+            'usericon'=>$usericon, 'comms'=>$comms, 'commsnum'=>$commsnum));
         VIEW::display('frontenddetail.html');
     }
 
@@ -97,6 +109,26 @@ class indexController
         $this->processDetailKeywords($data);
         VIEW::assign(array('data'=>$data,'catelist'=>$catelist));
         VIEW::display('frontendresource.html');
+    }
+
+    public function addcomment(){
+        $news_id = $_POST['news_id'];
+        $com_user = $_POST['com_user'];
+        $com_content = $_POST['com_content'];
+        $com_icon = $_POST['com_icon'];
+        $comment = M('comment');
+        $data = array(
+            'news_id' => $news_id,
+            'com_user' => $com_user,
+            'com_icon' => $com_icon,
+            'com_content' => $com_content
+        );
+        if($comment->insert($data)){
+            $response= 0;
+        }else{
+            $response = 1;
+        }
+        echo $response;
     }
 
     public function about(){

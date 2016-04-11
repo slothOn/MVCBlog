@@ -36,8 +36,9 @@ function M($name){
 }
 
 function ORG($path,$name,$params=array()){
-    require_once('../libs/ORG/'.$path.$name.'class.php');
-    $obj=new $name;
+    $parent=dirname(dirname(dirname(__FILE__)));
+    require_once($parent.'/libs/Model/'.$name.'.class.php');
+    $obj=new $name();
     if(!empty($params)){
         foreach($params as $key=>$val){
             $method='set'.$key;

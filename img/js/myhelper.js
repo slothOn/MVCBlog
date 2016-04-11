@@ -31,3 +31,9 @@ function compile(){
     }
 }
 addLoadEvent(compile);
+
+function getGetParams(index){
+    var args = window.location.search.substr(1).split("&");
+    if(args != null) return decodeURI(args[index].split("=")[1]);
+    return null;
+}

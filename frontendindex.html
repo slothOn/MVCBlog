@@ -12,7 +12,7 @@
     <link href="img/css/font-awesome.min.css" rel="stylesheet">
     <link href="img/css/bootstrap-social.css" rel="stylesheet">
     <link href="img/css/mystyle.css" rel="stylesheet">
-    <title>新闻页</title>
+    <title>我的狗窝</title>
 </head>
 <body>
     {include file='frontendnav.html'}
@@ -41,6 +41,7 @@
                     <span class="label label-success">{$keyword}</span>
                 {/foreach}
             </span>
+            <span class="label label-info newsdate"><i class="glyphicon glyphicon-calendar"></i>{$val['dateline']}</span>
             <p>{$val['content']|substr:0:250}</p>
             <p><a href="index.php?method=detail&id={$val['id']}" class="btn btn-primary btn-xs">More &#187;</a></p>
         </div>

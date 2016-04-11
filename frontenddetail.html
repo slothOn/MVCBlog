@@ -46,9 +46,85 @@
                             <span class="label label-success">{$keyword}</span>
                         {/foreach}
                     </span>
+                    <span class="label label-info newsdate"><i class="glyphicon glyphicon-calendar"></i>{$data['dateline']}</span>
                     <p>{$data['content']} </p>
                 </div>
             </div>
+            <section class="post_content panel-body clearfix">
+                <div id="no_more_data" class="row" style="font-size: large">
+                    <div style="margin-top: 20px; vertical-align: middle; width: 30%" class="alert alert-warning">
+                            <span class="comments-title" style="font-size: larger"><span class="glyphicon glyphicon-comment"></span>
+                                本文共 {$commsnum} 个回复</span>
+                    </div>
+                </div>
+                <div id="comments" class="comments-area">
+                    <ol id="commentlist" style="list-style-type: none;padding: 0px">
+                        {foreach $comms as $comm}
+                        <li>
+                            <div class="pull-left" style="padding-right: 10px">
+                                <img src="{$comm.com_icon}" class="comment-icon" height="50" width="50">
+                            </div>
+                            <div class="comment-body">
+                                <cite><b class="fn"><a>{$comm.com_user}</a></b> </cite>
+                                <span class="text-muted">says:</span>
+                                <div class="comment-content">
+                                    {$comm.com_content}
+                                </div>
+                                <time datetime="{$comm.com_date}" class="text-muted"><i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;{$comm.com_date}</time>
+                                <div class="pull-right">
+                                    <a href="http://www.moeyue.com/wp-login.php?redirect_to=http%3A%2F%2Fwww.moeyue.com%2F687.html">登录以回复</a>
+                                </div>
+                            </div>
+                        </li>
+                        {foreachelse}
+                        <p>当前尚无评论</p>
+                        {/foreach}
+                    </ol>
+                    <!--分页功能待上线
+                    <nav class="pager"><ul class="page-numbers">
+                        <li><a class="prev page-numbers" href="http://www.moeyue.com/687.html/comment-page-2/#comments">« 上一页</a></li>
+                        <li><a class="page-numbers" href="http://www.moeyue.com/687.html/comment-page-1/#comments">1</a></li>
+                        <li><a class="page-numbers" href="http://www.moeyue.com/687.html/comment-page-2/#comments">2</a></li>
+                        <li><span class="page-numbers current">3</span></li>
+                    </ul></nav>-->
+                    <div id="respond" class="comment-respond">
+                        <h3 id="reply-title" class="comment-reply-title">留言~0.0
+                            <small><a rel="nofollow" id="cancel-comment-reply-link" href="/687.html#respond" style="display:none;">取消回复</a></small>
+                        </h3>
+                        {if $username eq ""}
+                        <p class="must-log-in" style="color: #cd5c5c">请点击右下合作网站登录</p>
+                        {else}
+                        <div>
+                            <div class="col-xs-12">
+                                <h3>Send us your advice</h3>
+                            </div>
+                            <div class="col-xs-12 col-sm-9">
+                                <form class="form-horizontal">
+                                    <!--form-group acts as a row-->
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2">
+                                            <img id="curt_icon" src="{$usericon}" class="comment-icon" height="50" width="50"><br>
+                                            <span id="curt_user">{$username}</span>
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <textarea class="form-control" rows="12" id="feedback" name="feedback"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-10 col-sm-offset-2">
+                                            <input type="button" class="btn btn-primary" value="Send my advice" onclick="sendcomment()">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-xs-12 col-sm-3">
+                                <p style="padding:20px;"></p>
+                            </div>
+                        </div>
+                        {/if}
+                    </div>
+                </div>
+            </section>
         </div>
         {include file='frontendcate.html'}
     </div>
@@ -58,6 +134,7 @@
     <script src="img/js/jquery.min.js"></script>
     <script src="img/js/bootstrap.min.js"></script>
     <script src="img/js/showdown.min.js"></script>
+    <script src="img/js/myhelper.js"></script>
     <!--避免smarty定界符与jquery冲突-->
     {literal}
     <script>
@@ -66,6 +143,40 @@
         var rawcontent=newsnode.innerHTML;
         var content=converter.makeHtml(rawcontent);
         newsnode.innerHTML=content;
+        function sendcomment(){
+            //alert(getGetParams(1));
+            var newsid = getGetParams(1);
+            var comuser = $("#curt_user").html();
+            var comicon = $("#curt_icon").attr("src");
+            var comcontent = $("textarea").val();
+            alert(newsid+','+comuser+','+comicon+','+comcontent);
+            $.ajax({
+                url:"index.php?method=addcomment",
+                data:{
+                    news_id:newsid,
+                    com_user:comuser,
+                    com_icon:comicon,
+                    com_content:comcontent
+                },
+                type:"post",
+                success:function($data){
+                    if($data == 0){
+                        appendNewComment(comuser, comicon, comcontent);
+                    }else{
+                        alert('评论提交失败');
+                    }
+                }
+            });
+        }
+
+        function appendNewComment(com_user, com_icon, com_content){
+            var comlist = $("#commentlist");
+            var newcom = comlist.find("li").first().clone();
+            newcom.find("img").first().attr("src",com_icon);
+            newcom.find(".comment-content").html(com_content);
+            newcom.find(".comment-user").html(com_user);
+            comlist.append(newcom);
+        }
     </script>
     {/literal}
 </body>

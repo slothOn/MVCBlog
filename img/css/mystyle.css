@@ -75,6 +75,7 @@ address {
 .affix {
     top: 100px;
 }
-.mycategory,.mysubcategory{
+.mycategory, .mysubcategory, .newsdate{
     padding: 5px 10px;
 }
+
