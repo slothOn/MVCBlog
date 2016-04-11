@@ -20,7 +20,7 @@ class commentModel
     }
 
     public function countWithId($id){
-        $sql = "select count(*) from $this->table";
+        $sql = "select count(*) from $this->table WHERE com_id=$id";
         return DB::findResult($sql);
     }
 }
