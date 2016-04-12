@@ -1,7 +1,7 @@
 /**
  * Created by zxc on 16-4-11.
  */
-function toLogin()
+function toQQLogin()
 {
     //以下为按钮点击事件的逻辑。注意这里要重新打开窗口
     //否则后面跳转到QQ登录，授权页面时会直接缩小当前浏览器的窗口，而不是打开新窗口

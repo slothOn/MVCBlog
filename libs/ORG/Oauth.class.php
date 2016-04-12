@@ -41,7 +41,6 @@ class Oauth{
             "response_type" => "code",
             "client_id" => $appid,
             "redirect_uri" => $callback,
-            "state" => $state,
             "scope" => $scope
         );
 

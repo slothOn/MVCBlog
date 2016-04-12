@@ -32,8 +32,39 @@ function compile(){
 }
 addLoadEvent(compile);
 
-function getGetParams(index){
-    var args = window.location.search.substr(1).split("&");
-    if(args != null) return decodeURI(args[index].split("=")[1]);
+function getGetParams(name){
+    var queryurl = window.location.search, param;
+    var pos1 =queryurl.search(name);
+    if(pos1 == -1) return null;
+    var pos2 = queryurl.substr(pos1).search("&");
+    if(pos2 == -1) param = queryurl.substr(pos1);
+    else param = queryurl.substr(pos1, pos2 - pos1);
+    if(param != null) return decodeURI(param.split("=")[1]);
     return null;
+}
+
+function sendcomment(){
+    //alert(getGetParams(1));
+    var newsid = getGetParams("id");
+    var comuser = $("#curt_user").html();
+    var comicon = $("#curt_icon").attr("src");
+    var comcontent = $("textarea").val();
+    //alert(newsid+','+comuser+','+comicon+','+comcontent);
+    $.ajax({
+        url:"index.php?method=addcomment",
+        data:{
+            news_id:newsid,
+            com_user:comuser,
+            com_icon:comicon,
+            com_content:comcontent
+        },
+        type:"post",
+        success:function($data){
+            if($data == 0){
+                appendNewComment(comuser, comicon, comcontent);
+            }else{
+                alert('评论提交失败');
+            }
+        }
+    });
 }

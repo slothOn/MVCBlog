@@ -12,7 +12,7 @@
     <link href="img/css/font-awesome.min.css" rel="stylesheet">
     <link href="img/css/bootstrap-social.css" rel="stylesheet">
     <link href="img/css/mystyle.css" rel="stylesheet">
-    <title>新闻页</title>
+    <title>详情页</title>
 </head>
 <body>
     {include file='frontendnav.html'}
@@ -143,38 +143,20 @@
         var rawcontent=newsnode.innerHTML;
         var content=converter.makeHtml(rawcontent);
         newsnode.innerHTML=content;
-        function sendcomment(){
-            //alert(getGetParams(1));
-            var newsid = getGetParams(1);
-            var comuser = $("#curt_user").html();
-            var comicon = $("#curt_icon").attr("src");
-            var comcontent = $("textarea").val();
-            alert(newsid+','+comuser+','+comicon+','+comcontent);
-            $.ajax({
-                url:"index.php?method=addcomment",
-                data:{
-                    news_id:newsid,
-                    com_user:comuser,
-                    com_icon:comicon,
-                    com_content:comcontent
-                },
-                type:"post",
-                success:function($data){
-                    if($data == 0){
-                        appendNewComment(comuser, comicon, comcontent);
-                    }else{
-                        alert('评论提交失败');
-                    }
-                }
-            });
-        }
 
         function appendNewComment(com_user, com_icon, com_content){
             var comlist = $("#commentlist");
-            var newcom = comlist.find("li").first().clone();
-            newcom.find("img").first().attr("src",com_icon);
-            newcom.find(".comment-content").html(com_content);
-            newcom.find(".comment-user").html(com_user);
+            var newcom = document.createElement("li");
+            newcom.innerHTML = '<div class="pull-left" style="padding-right: 10px"><img src="{$comm.com_icon}" class="comment-icon" height="50" width="50"> </div> <div class="comment-body">' +
+                    ' <cite><b class="fn"><a>{$comm.com_user}</a></b> </cite> <span class="text-muted">says:</span> <div class="comment-content">{$comm.com_content} </div> ' +
+                    '<time datetime="{$comm.com_date}" class="text-muted"><i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;{$comm.com_date}</time> ' +
+                    '<div class="pull-right"> ' + '<a href="">登录以回复</a> </div> </div>';
+            newcom.getElementsByTagName("img")[0].src = com_icon;
+            newcom.getElementsByClassName("comment-content")[0].innerHTML = com_content;
+            newcom.getElementsByTagName("cite")[0].getElementsByTagName("a")[0].innerHTML = com_user;
+            date = new Date();
+            newcom.getElementsByTagName("time")[0].innerHTML = '<i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;' + date.getFullYear()+'-'+ (parseInt(date.getMonth())+1)+'-'+date.getDate()
+            +' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
             comlist.append(newcom);
         }
     </script>
