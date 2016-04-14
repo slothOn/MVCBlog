@@ -9,24 +9,40 @@
 class indexController
 {
     public function index(){
-        $pagenum=$_GET['page']?$_GET['page']:1;
-        $scate_id=$_GET['cate']?$_GET['cate']:0;
-        $searchkeywords=$_GET['searchkeywords']?$_GET['searchkeywords']:'';
-        if($pagenum<=1){
-            $newsobj=M('news');
-            if(empty($searchkeywords) || $searchkeywords == ''){
-                $data=$newsobj->findLimitedNewsWithCate($pagenum,3,$scate_id);
-            }else{
-                $data=$newsobj->findLimitedNewsWithKeywords($pagenum, 3, $searchkeywords);
-            }
-            $this->processKeywords($data);
-            VIEW::assign(array('data'=>$data));
-            VIEW::display('frontendindex.html');
+
+        if(!empty($_GET['code'])){
+            $qc = ORG('QC');
+            $acs = $qc->qq_callback();
+            $access_token = $acs['access_token'];
+            $preurl = $acs['preurl'];
+            $preurl = str_replace("&amp;","&",$preurl);
+            $oid = $qc->get_openid();
+            $qc2 = new QC($access_token,$oid);
+            $uinfo = $qc2->get_user_info();
+            //print_r($uinfo);
+
+            $_SESSION['QC_userInfo'] = $uinfo;
+            header("location:index.php".$preurl);
         }else{
-            if(empty($searchkeywords) || $searchkeywords ==''){
-                $this->moreNews($pagenum,$scate_id);    
+            $pagenum=$_GET['page']?$_GET['page']:1;
+            $scate_id=$_GET['cate']?$_GET['cate']:0;
+            $searchkeywords=$_GET['searchkeywords']?$_GET['searchkeywords']:'';
+            if($pagenum<=1){
+                $newsobj=M('news');
+                if(empty($searchkeywords) || $searchkeywords == ''){
+                    $data=$newsobj->findLimitedNewsWithCate($pagenum,3,$scate_id);
+                }else{
+                    $data=$newsobj->findLimitedNewsWithKeywords($pagenum, 3, $searchkeywords);
+                }
+                $this->processKeywords($data);
+                VIEW::assign(array('data'=>$data));
+                VIEW::display('frontendindex.html');
             }else{
-                $this->moreNewsWithKeywords($pagenum, $searchkeywords);
+                if(empty($searchkeywords) || $searchkeywords ==''){
+                    $this->moreNews($pagenum,$scate_id);
+                }else{
+                    $this->moreNewsWithKeywords($pagenum, $searchkeywords);
+                }
             }
         }
     }
@@ -134,6 +150,12 @@ class indexController
     public function about(){
         $view = V('about');
         $view->display();
+    }
+
+    public function QQConnect(){
+        $preurl = $_GET['preurl'];
+        $qc = ORG('QC');
+        $qc->qq_login(urlencode($preurl));
     }
 
     protected function testM(){

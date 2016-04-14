@@ -14,11 +14,11 @@ class CACHE
         self::$cache->connect();
     }
 
-    public static function save(){
-
+    public static function saveKey($key, $val){
+        self::$cache->saveKey($key, $val);
     }
 
-    public static function get(){
-
+    public static function getKey($key){
+        return self::$cache->getKey($key);
     }
 }

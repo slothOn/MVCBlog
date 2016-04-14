@@ -9,9 +9,16 @@ Class My_redis{
 
     private $redis;
     public function connect(){
-        $redis = new Redis();
-        $redis->connect("localhost", 6379);
+        $this->redis = new Redis();
+        $this->redis->connect("localhost", 6379);
+        ChromePhp::log('cache connected');
     }
 
+    public function saveKey($key, $val){
+        $this->redis->set($key, $val);
+    }
 
+    public function getKey($key){
+        return $this->redis->get($key);
+    }
 }

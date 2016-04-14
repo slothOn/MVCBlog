@@ -35,16 +35,11 @@ function M($name){
     return $obj;
 }
 
-function ORG($path,$name,$params=array()){
+function ORG($name,$params=''){
     $parent=dirname(dirname(dirname(__FILE__)));
-    require_once($parent.'/libs/Model/'.$name.'.class.php');
-    $obj=new $name();
-    if(!empty($params)){
-        foreach($params as $key=>$val){
-            $method='set'.$key;
-            $obj->$method($val);
-        }
-    }
+    require_once($parent.'/libs/ORG/'.$name.'.class.php');
+    if($params != '') $obj=new $name();
+    else $obj = new $name($params);
     return $obj;
 }
 
