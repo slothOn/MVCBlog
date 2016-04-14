@@ -12,5 +12,7 @@ $paths=array(
     'libs/db/mysql.class.php',
     'libs/core/DB.class.php',
     'libs/core/VIEW.class.php',
+    'libs/core/CACHE.class.php',
+    'libs/cache/my_redis.class.php',
     'libs/db/my_mysqli.class.php'
 );

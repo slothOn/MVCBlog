@@ -20,7 +20,7 @@ class Recorder{
 //        $this->inc = json_decode($incFileContents);
         $this->inc->appid = "101303083";
         $this->inc->appkey = "611daeb278b4aabe32f181c61eaf92d0";
-        $this->inc->callback = "http://127.0.0.1/MVCLearn/callback.php";
+        $this->inc->callback = "http://127.0.0.1/MVCLearn/index.php";
         $this->inc->scope = "get_user_info";
         $this->inc->errorReport = "true";
         $this->inc->storageType = "file";

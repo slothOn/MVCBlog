@@ -23,6 +23,9 @@ class PC{
     public static function initDB(){
         DB::init('My_mysqli',self::$configs['db_config']);
     }
+    public static function initCACHE(){
+        CACHE::init('My_redis');
+    }
     public static function initControllers(){
         self::$controller=isset($_GET['controller'])?$_GET['controller']:'index';
     }
@@ -32,7 +35,7 @@ class PC{
     public static function run($configs){
         self::$configs=$configs;
         self::initDB();
-
+        self::initCACHE();
         self::initView();
         self::initControllers();
         self::initMethods();

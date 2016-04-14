@@ -27,21 +27,17 @@ class Oauth{
         $this->error = new ErrorCase();
     }
 
-    public function qq_login(){
+    public function qq_login($preurl){
         $appid = $this->recorder->readInc("appid");
         $callback = $this->recorder->readInc("callback");
         $scope = $this->recorder->readInc("scope");
-
-        //-------生成唯一随机串防CSRF攻击
-//        $state = md5(uniqid(rand(), TRUE));
-//        $this->recorder->write('state',$state);
 
         //-------构造请求参数列表
         $keysArr = array(
             "response_type" => "code",
             "client_id" => $appid,
             "redirect_uri" => $callback,
-            "state" => $state,
+            "state" => $preurl,
             "scope" => $scope
         );
 
@@ -51,12 +47,7 @@ class Oauth{
     }
 
     public function qq_callback(){
-        $state = $this->recorder->read("state");
-
-        //--------验证state防止CSRF攻击
-//        if($_GET['state'] != $state){
-//            $this->error->showError("30001");
-//        }
+        $preurl = urldecode($_GET['state']);
 
         //-------请求参数列表
         $keysArr = array(
@@ -87,8 +78,8 @@ class Oauth{
         parse_str($response, $params);
 
         $this->recorder->write("access_token", $params["access_token"]);
-        return $params["access_token"];
-
+        //return $params["access_token"];
+        return array("access_token"=>$params['access_token'], "preurl"=>$preurl);
     }
 
     public function get_openid(){
