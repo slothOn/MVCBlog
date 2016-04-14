@@ -8,6 +8,7 @@
     min-height: 100px;
     border-bottom: 1px ridge;
     background-color: #EEEEEE;
+    position: relative;
 }
 .row-footer {
     background-color: #AfAfAf;
@@ -78,4 +79,5 @@ address {
 .mycategory, .mysubcategory, .newsdate{
     padding: 5px 10px;
 }
+
 
