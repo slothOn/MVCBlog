@@ -11,18 +11,45 @@ class indexController
     public function index(){
 
         if(!empty($_GET['code'])){
-            $qc = ORG('QC');
-            $acs = $qc->qq_callback();
-            $access_token = $acs['access_token'];
-            $preurl = $acs['preurl'];
-            $preurl = str_replace("&amp;","&",$preurl);
-            $oid = $qc->get_openid();
-            $qc2 = new QC($access_token,$oid);
-            $uinfo = $qc2->get_user_info();
-            //print_r($uinfo);
+            if(empty($_GET['state'])){
+                //weibo login
+                $weibo = ORG('WeiboAuth');
+                $params = array("client_id"=>WB_AKEY,"client_secret"=>WB_SKEY);
+                foreach($params as $key=>$val){
+                    $weibo->$key = $val;
+                }
+                if(isset($_REQUEST['code'])){
+                    $params = array();
+                    $params['code'] = $_REQUEST['code'];
+                    $params['redirect_uri'] = WB_CALLBACK_URL;
+                    try{
+                        $token = $weibo->getAccessToken($params);
+                    }catch (Exception $e){
+                        $this->showMessage($e->getMessage(),'index.php');
+                    }
+                    if($token){
+                        $weibo->access_token = $token;$uid = $weibo->get_uid();
+                        $uinfo = $weibo->get_uinfo($uid);
+                        $_SESSION['userInfo'] = $uinfo;
+                        header("location:index.php");
+                    }
+                }else{
+                    $this->showMessage("授权错误",'index.php');
+                }
+            }else{
+                $qc = ORG('QC');
+                $acs = $qc->qq_callback();
+                $access_token = $acs['access_token'];
+                $preurl = $acs['preurl'];
+                $preurl = str_replace("&amp;","&",$preurl);
+                $oid = $qc->get_openid();
+                $qc2 = new QC($access_token,$oid);
+                $uinfo = $qc2->get_user_info();
+                //print_r($uinfo);
 
-            $_SESSION['QC_userInfo'] = $uinfo;
-            header("location:index.php".$preurl);
+                $_SESSION['userInfo'] = $uinfo;
+                header("location:index.php".$preurl);
+            }
         }else{
             $pagenum=$_GET['page']?$_GET['page']:1;
             $scate_id=$_GET['cate']?$_GET['cate']:0;
@@ -68,9 +95,9 @@ class indexController
         $commsnum = $commobj->countWithId($id);
         $username = "";
         session_start();
-        if(!empty($_SESSION['QC_userInfo'])){
-            $username = $_SESSION['QC_userInfo']['nickname'];
-            $usericon = $_SESSION['QC_userInfo']['figureurl_qq_1'];
+        if(!empty($_SESSION['userInfo'])){
+            $username = $_SESSION['userInfo']['nickname']?$_SESSION['userInfo']['nickname']:$_SESSION['userInfo']['name'];
+            $usericon = $_SESSION['userInfo']['figureurl_qq_1']?$_SESSION['userInfo']['figureurl_qq_1']:$_SESSION['userInfo']['profile_image_url'];
         }
 
         VIEW::assign(array('data'=>$data,'catelist'=>$catelist, 'username'=>$username,
@@ -158,6 +185,16 @@ class indexController
         $qc->qq_login(urlencode($preurl));
     }
 
+    public function WeiboConnect(){
+        $weibo = ORG('WeiboAuth');
+        $params = array("client_id"=>WB_AKEY,"client_secret"=>WB_SKEY);
+        foreach($params as $key=>$val){
+            $weibo->$key = $val;
+        }
+        $code_url = $weibo->getAuthorizeURL(WB_CALLBACK_URL);
+        header("location: ".$code_url);
+    }
+
     protected function testM(){
         M('auth');
     }
@@ -168,4 +205,3 @@ class indexController
     }
 }
 
-//(new indexController())->testM();

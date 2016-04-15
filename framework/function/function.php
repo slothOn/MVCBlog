@@ -38,8 +38,12 @@ function M($name){
 function ORG($name,$params=''){
     $parent=dirname(dirname(dirname(__FILE__)));
     require_once($parent.'/libs/ORG/'.$name.'.class.php');
-    if($params != '') $obj=new $name();
-    else $obj = new $name($params);
+    $obj = new $name();
+    if($params != ''){
+       foreach($params as $key=>$val){
+           $obj->$key = $val;
+       }
+    }
     return $obj;
 }
 
