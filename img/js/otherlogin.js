@@ -8,3 +8,7 @@ function toQQLogin()
     //var A=window.open("libs/ORG/QQConnect.php?preurl="+window.location.search,"TencentLogin");
     var A=window.open("index.php?method=QQConnect&preurl="+encodeURIComponent(window.location.search),"TencentLogin");
 }
+
+function toWeiboLogin(){
+    window.open("index.php?method=WeiboConnect","WeiboLogin");
+}
