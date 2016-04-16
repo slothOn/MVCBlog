@@ -9,9 +9,10 @@
 class indexController
 {
     public function index(){
-
+        
         if(!empty($_GET['code'])){
-            if(empty($_GET['state'])){
+           $state = $_GET['state']; 
+	   if(substr($state, 0, 2) == 'WB'){
                 //weibo login
                 $weibo = ORG('WeiboAuth');
                 $params = array("client_id"=>WB_AKEY,"client_secret"=>WB_SKEY);
@@ -31,7 +32,9 @@ class indexController
                         $weibo->access_token = $token;$uid = $weibo->get_uid();
                         $uinfo = $weibo->get_uinfo($uid);
                         $_SESSION['userInfo'] = $uinfo;
-                        header("location:index.php");
+			$preurl = substr($state, 2);
+			//echo "preurl:".$_SESSION['preurl'];
+			header("location:index.php".$preurl);
                     }
                 }else{
                     $this->showMessage("授权错误",'index.php');
@@ -50,6 +53,8 @@ class indexController
                 $_SESSION['userInfo'] = $uinfo;
                 header("location:index.php".$preurl);
             }
+	    
+            //echo $_GET['state'];
         }else{
             $pagenum=$_GET['page']?$_GET['page']:1;
             $scate_id=$_GET['cate']?$_GET['cate']:0;
@@ -186,12 +191,15 @@ class indexController
     }
 
     public function WeiboConnect(){
+	$preurl = $_GET['preurl'];
+	//$_SESSION['preurl'] = $preurl;
         $weibo = ORG('WeiboAuth');
         $params = array("client_id"=>WB_AKEY,"client_secret"=>WB_SKEY);
         foreach($params as $key=>$val){
             $weibo->$key = $val;
         }
-        $code_url = $weibo->getAuthorizeURL(WB_CALLBACK_URL);
+        $code_url = $weibo->getAuthorizeURL(WB_CALLBACK_URL,'code','WB'.urlencode($preurl));
+        //header("location: ".$code_url.'&preurl='.urlencode($preurl));
         header("location: ".$code_url);
     }
 
@@ -203,5 +211,15 @@ class indexController
         echo "<script>alert('$mes');window.location.href='$href';</script>";
         exit;
     }
+    public function test1(){
+    	$preurl = $_GET['preurl'];
+        $_SESSION['preurl'] = $preurl;
+	//header("location:index.php?method=test2"); 
+	header("location:https://localhost/test.php"); 
+    }	
+    public function test2(){
+	echo "a:".$_GET['a'];    
+	echo "preurl:".$_SESSION['preurl'];
+    }	
 }
 

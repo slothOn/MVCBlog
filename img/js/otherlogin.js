@@ -10,5 +10,8 @@ function toQQLogin()
 }
 
 function toWeiboLogin(){
-    window.open("index.php?method=WeiboConnect","WeiboLogin");
+    //window.open("index.php?method=WeiboConnect&preurl="+encodeURIComponent(window.location.search),"WeiboLogin");
+    window.location.href = "index.php?method=WeiboConnect&preurl="+encodeURIComponent(window.location.search); 
+    //window.location.href = "index.php?method=test1&preurl="+encodeURIComponent(window.location.search); 
+    
 }
