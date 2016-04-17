@@ -3,8 +3,10 @@
  */
 $(function(){
     var winH=$(window).height();//页面可视区域
-    var i=2;
+    var pagei=2;
     var preaa=1;//辅助判断滚动条方向
+
+    var uniqueArr = [];
     $(window).scroll(function () {
         var pageH=$(document.body).height();//page height,随着加载动态变化
         var scrollT=$(window).scrollTop();//滚动条top
@@ -15,14 +17,17 @@ $(function(){
             $("#news_loading").css("display","block");
             setTimeout(function(){
                 //ajax加载新的内容 jquery.getJSON相当于GET方法,参数追加到URL后,并且data是已经解析完成的json字符串
-                $.getJSON($(window).attr('location'),{"page":i},function(data){
+                $.getJSON($(window).attr('location'),{"page":pagei},function(data){
                     $("#news_loading").css("display","none");
-                    i++;
+                    pagei++;
                     if(data){
                         if(data.num != 0){
                             for(var j=0;j<data.list.length;j++){
                                 var objj=data.list[j];
-                                assembleNews(objj.id,objj.title,objj.keywords,objj.category,objj.subcategory,objj.content);
+                                if($.inArray(objj.id, uniqueArr) === -1){
+                                    uniqueArr.push(objj.id);
+                                    assembleNews(objj.id,objj.title,objj.keywords,objj.category,objj.subcategory,objj.content);
+                                }
                             }
                         }else{
                             //已经加载至底部
