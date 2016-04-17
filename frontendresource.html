@@ -2,17 +2,15 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <!--声明mobile first-->
     <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
-    <!--禁止屏幕缩放-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <!--引入bootstrap和fontawesome-->
     <link href="img/css/bootstrap.min.css" rel="stylesheet">
     <link href="img/css/bootstrap-theme.css" rel="stylesheet">
     <link href="img/css/font-awesome.min.css" rel="stylesheet">
     <link href="img/css/bootstrap-social.css" rel="stylesheet">
     <link href="img/css/mystyle.css" rel="stylesheet">
-    <title>新闻页</title>
+    <link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
+    <title>GIS</title>
 </head>
 <body>
     {include file='frontendnav.html'}
@@ -68,5 +66,7 @@
         newsnode.innerHTML=content;
     </script>
     {/literal}
+    <script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script> 
+    <script>hljs.initHighlightingOnLoad();</script> 
 </body>
 </html>
