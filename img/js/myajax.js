@@ -5,7 +5,6 @@ $(function(){
     var winH=$(window).height();//页面可视区域
     var pagei=2;
     var preaa=1;//辅助判断滚动条方向
-
     var uniqueArr = [];
     $(window).scroll(function () {
         var pageH=$(document.body).height();//page height,随着加载动态变化

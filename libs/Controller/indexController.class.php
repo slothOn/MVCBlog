@@ -9,10 +9,9 @@
 class indexController
 {
     public function index(){
-        
         if(!empty($_GET['code'])){
-           $state = $_GET['state']; 
-	   if(substr($state, 0, 2) == 'WB'){
+           $state = $_GET['state'];
+            if(substr($state, 0, 2) == 'WB'){
                 //weibo login
                 $weibo = ORG('WeiboAuth');
                 $params = array("client_id"=>WB_AKEY,"client_secret"=>WB_SKEY);
@@ -32,9 +31,8 @@ class indexController
                         $weibo->access_token = $token;$uid = $weibo->get_uid();
                         $uinfo = $weibo->get_uinfo($uid);
                         $_SESSION['userInfo'] = $uinfo;
-			$preurl = substr($state, 2);
-			//echo "preurl:".$_SESSION['preurl'];
-			header("location:index.php".$preurl);
+                        $preurl = substr($state, 2);
+                        header("location:index.php".$preurl);
                     }
                 }else{
                     $this->showMessage("授权错误",'index.php');
@@ -48,14 +46,10 @@ class indexController
                 $oid = $qc->get_openid();
                 $qc2 = new QC($access_token,$oid);
                 $uinfo = $qc2->get_user_info();
-                //print_r($uinfo);
-
                 $_SESSION['userInfo'] = $uinfo;
                 header("location:index.php".$preurl);
             }
-	    
-            //echo $_GET['state'];
-        }else{
+	    }else{
             $pagenum=$_GET['page']?$_GET['page']:1;
             $scate_id=$_GET['cate']?$_GET['cate']:0;
             $searchkeywords=$_GET['searchkeywords']?$_GET['searchkeywords']:'';
