@@ -17,16 +17,17 @@ $(function(){
             $("#news_loading").css("display","block");
             setTimeout(function(){
                 //ajax加载新的内容 jquery.getJSON相当于GET方法,参数追加到URL后,并且data是已经解析完成的json字符串
+                console.log(pagei);
                 $.getJSON($(window).attr('location'),{"page":pagei},function(data){
                     $("#news_loading").css("display","none");
-                    pagei++;
                     if(data){
                         if(data.num != 0){
-                            for(var j=0;j<data.list.length;j++){
-                                var objj=data.list[j];
-                                if($.inArray(objj.id, uniqueArr) === -1){
-                                    uniqueArr.push(objj.id);
+                            if($.inArray(data.list[0].id, uniqueArr) === -1){
+                                pagei++;
+                                for(var j=0;j<data.list.length;j++){
+                                    var objj=data.list[j];
                                     assembleNews(objj.id,objj.title,objj.keywords,objj.category,objj.subcategory,objj.content);
+                                    uniqueArr.push(objj.id);
                                 }
                             }
                         }else{
@@ -44,7 +45,6 @@ function assembleNews(id,title,keywords,category,subcategory,content){
     //markdown支持
     var converter=new showdown.Converter();
     content=converter.makeHtml(content.substr(0,250));
-    console.log(id+","+title+","+keywords);
     var newarticle=$(".news").clone().first();
     newarticle.find(".media-heading").html(title+"&nbsp;&nbsp;");
     //newarticle.find(".keyword").html(keywords);
