@@ -32,7 +32,8 @@ class indexController
                         $uinfo = $weibo->get_uinfo($uid);
                         $_SESSION['userInfo'] = $uinfo;
                         $preurl = substr($state, 2);
-                        header("location:index.php".$preurl);
+                        //header("location:index.php".$preurl);
+                        $this->showMessage("登录成功","index.php".$preurl);
                     }
                 }else{
                     $this->showMessage("授权错误",'index.php');
@@ -47,7 +48,8 @@ class indexController
                 $qc2 = new QC($access_token,$oid);
                 $uinfo = $qc2->get_user_info();
                 $_SESSION['userInfo'] = $uinfo;
-                header("location:index.php".$preurl);
+                //header("location:index.php".$preurl);
+                $this->showMessage("登录成功","index.php".$preurl);
             }
 	    }else{
             $pagenum=$_GET['page']?$_GET['page']:1;
