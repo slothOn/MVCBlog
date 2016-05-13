@@ -15,3 +15,7 @@ function toWeiboLogin(){
     //window.location.href = "index.php?method=test1&preurl="+encodeURIComponent(window.location.search); 
     
 }
+
+function toWechatLogin(){
+    alert("暂不支持微信登录,请使用QQ或微博登录网站");
+}
