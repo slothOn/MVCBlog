@@ -107,9 +107,16 @@
 		</form>
 		<div class="spacer"></div>
 	</section>
-	<!--
-	<script src="img/js/backendadmin.js"></script>
-	-->
+	<script type="text/javascript">
+		//textarea换行
+		$("#publish_article").click(function(){
+			var textarea = $("textarea");
+			var txtcontent = textarea.val();
+			var ntxt = txtcontent.replace('\n','<br>');
+			textarea.text(ntxt);
+			$("#form1").submit();
+		});
+	</script>
 </body>
 
 </html>

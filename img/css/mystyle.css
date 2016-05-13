@@ -83,4 +83,7 @@ address {
 .comments-title{
     margin-top: 20px; vertical-align: middle; min-width: 100px; width: 30%;
 }
+.article_content{
+    line-height: 2em;
+}
 
