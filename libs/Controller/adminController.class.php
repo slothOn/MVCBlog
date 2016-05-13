@@ -96,7 +96,7 @@ class adminController
             $this->showMessage('请输入标题和内容','index.php?controller=admin&method=newsadd');
         }
         $title = daddslashes($title);
-        $content = daddslashes($content);
+        //$content = daddslashes($content);
         $keywords = daddslashes($keywords);
         $data=array(
             'title'=>$title,
